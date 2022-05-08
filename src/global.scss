@@ -1,26 +1,143 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
-
-/* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
 
-/* Basic CSS for apps built with Ionic */
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
-/* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+// Montserrat
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
+
+* {
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+ion-button {
+    --border-color: none;
+    --background: none;
+    --border-color: none;
+    --border-radius: none;
+    --border-style: none;
+    --border-width: none;
+    --box-shadow: none;
+    --color-activated: none;
+    --color-focused: none;
+    --color-hover: none;
+    ----transition: none;
+    text-transform: none;
+    // --border-radius Border radius of the button
+    // --border-style  Border style of the button
+    // --border-width  Border width of the button
+    // --box-shadow    Box shadow of the button
+}
+
+h1, h2, p {
+    margin: 0;
+}
+
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login__title {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--blue700);
+}
+
+.login__description {
+    color: var(--grey300);
+}
+
+.input-label {
+    color: var(--blue700);
+    font-weight: 600;
+}
+
+.input ~ .input-label {
+    display: inline-block;
+    margin-top: 25px;
+}
+
+.input {
+    width: 100%;
+    min-height: 25px;
+    line-height: 25px;
+    font-family: "Montserrat", sans-serif;
+    border-bottom: 2px solid var(--blue700);
+
+    ::placeholder {
+        color: var(--grey300);
+    }
+}
+
+.form-actions__account {
+    color: var(--grey300);
+    text-align: center;
+    .login-link {
+        color: var(--blue700);
+        font-weight: 600;
+        text-decoration: underline;
+    }
+}
+
+.add-button {
+    display: inline-block;
+    width: 3.5em;
+    height: 3em;
+    background-color: var(--blue700);
+    border-radius: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .add-button-icon {
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+}
+
+.button {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 20px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.button-icon {
+    display: inline-block;
+    padding: .9em 1em;
+    border-radius: 2em;
+    background-color: var(--blue700);
+}
+
+.icon--white {
+    color: var(--white);
+}
+
+.button--blue {
+    background-color: var(--blue700);
+    color: var(--white);
+}
+
+.button--outline--blue {
+    border: 1px solid var(--blue700);
+    color: var(--blue700);
+}

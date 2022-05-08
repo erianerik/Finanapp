@@ -1,7 +1,7 @@
 {
   "name": "finanapp",
   "integrations": {
-    "capacitor": {}
+    "cordova": {}
   },
   "type": "angular"
 }

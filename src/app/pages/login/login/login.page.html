@@ -1,0 +1,27 @@
+<ion-content>
+  <form class="container form-login">
+    <div class="form-login__content">
+
+      <header class="login__header">
+        <h1 class="login__header__title login__title">Bem Vindo de volta</h1>
+        <p class="login__header__description login__description">Faça login da sua conta</p>
+      </header>
+
+      <div class="form-login__content__inputs">
+
+        <ion-label class="input-label">Usuário</ion-label>
+        <ion-input class="input" placeholder="Ex.: José Agusto"></ion-input>
+
+        <ion-label class="input-label">Senha</ion-label>
+        <ion-input class="input" type="password" placeholder="Ex.: *********"></ion-input>
+
+        <a class="form-login__forget-password">Esqueceu senha?</a>
+      </div>
+    </div>
+
+    <div class="form__actions">
+      <ion-button class="button button--blue" (click)="navigateHome()">Login</ion-button>
+      <p class="form-actions__account">Não possui conta? <span (click)="navigateRegister()" class="login-link">Cadastra-se</span></p>
+    </div>
+  </form>
+</ion-content>

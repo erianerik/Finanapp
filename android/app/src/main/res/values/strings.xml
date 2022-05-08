@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">finanapp</string>
+    <string name="title_activity_main">finanapp</string>
+    <string name="package_name">com.finanapp</string>
+    <string name="custom_url_scheme">com.finanapp</string>
+</resources>

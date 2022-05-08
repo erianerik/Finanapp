@@ -1,27 +1,37 @@
-#container {
-  text-align: center;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.home__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.home__title {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--blue800);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.home__content {
+    padding: 15px 0;
+    text-align: center;
+
+    .home__description {
+        margin: 15px auto;
+        max-width: 80%;
+        line-height: 25px;
+        overflow-wrap: break-word;
+    }
+
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+.home__buttons {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-direction: column;
 }

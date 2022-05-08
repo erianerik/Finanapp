@@ -1,0 +1,118 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.home__month {
+    text-align: center;
+    font-weight: 600;
+}
+
+.header__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em 0;
+    .header__cost__container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .header__title {
+            font-size: clamp(0.5em, 0.75em, 1em);
+            color: var(--grey300);
+        }
+
+        .header__cost {
+            font-size: clamp(0.85em, 1em, 1.3em);
+        }
+        .header {
+            width: 100%;
+
+            .header__cost {
+                margin-top: 0.2em;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+.home__statistisc {
+    width: 100%;
+
+    .statistisc__container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+}
+.statistic__title {
+    font-size: clamp(0.7em, 0.7em, 1.5em);
+    color: var(--grey700);
+}
+
+.statistic__value {
+    font-size: clamp(0.8em, 0.8em, 1.3em);
+    font-weight: 600;
+    line-height: 2em;
+    color: var(--white400);
+}
+
+.statistisc-button {
+    width: 100%;
+    height: 3em;
+    margin-top: 1.5em;
+    line-height: 3em;
+    font-size: 0.8em;
+    text-align: center;
+    border-radius: 2em;
+    background-color: var(--blue700);
+}
+
+.cost-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em 2em;
+}
+
+.cost__card {
+    width: calc(50% - 1em);
+    min-height: 2vh;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: var(--white100);
+    border-radius: 1em;
+    background-color: var(--blue700);
+
+    .cost__card__header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .card__item__porcent {
+            font-size: 0.7em;
+        }
+    }
+
+    .cost__card__body {
+        margin-top: 0.7em;
+        .card__item__value {
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .card__item__type-title {
+            margin-top: 0.1em;
+            font-size: clamp(0.8em, 0.85em, 1.2em);
+        }
+    }
+}
