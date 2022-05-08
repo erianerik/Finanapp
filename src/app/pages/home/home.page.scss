@@ -23,12 +23,12 @@
         align-items: center;
 
         .header__title {
-            font-size: clamp(0.5em, 0.75em, 1em);
+            font-size: clamp(0.5em, 0.85em, 1em);
             color: var(--grey300);
         }
 
         .header__cost {
-            font-size: clamp(0.85em, 1em, 1.3em);
+            font-size: clamp(0.85em, 1.2em, 1.3em);
         }
         .header {
             width: 100%;
@@ -52,12 +52,12 @@
     }
 }
 .statistic__title {
-    font-size: clamp(0.7em, 0.7em, 1.5em);
+    font-size: clamp(0.7em, 0.9em, 1.3em);
     color: var(--grey700);
 }
 
 .statistic__value {
-    font-size: clamp(0.8em, 0.8em, 1.3em);
+    font-size: clamp(0.8em, 0.9em, 1.3em);
     font-weight: 600;
     line-height: 2em;
     color: var(--white400);
@@ -99,7 +99,7 @@
         justify-content: space-between;
 
         .card__item__porcent {
-            font-size: 0.7em;
+            font-size: clamp(0.7em, 1em, 1.2em);
         }
     }
 
@@ -112,7 +112,7 @@
 
         .card__item__type-title {
             margin-top: 0.1em;
-            font-size: clamp(0.8em, 0.85em, 1.2em);
+            font-size: clamp(0.8em, 1em, 1.2em);
         }
     }
 }
