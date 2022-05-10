@@ -47,6 +47,7 @@ ul {
     list-style: none;
 }
 
+
 .container {
     box-sizing: border-box;
     width: 100%;
@@ -55,6 +56,15 @@ ul {
     padding-bottom: calc(15px + 2.5em);
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.txt-align-right {
+    text-align: right;
+}
+
+.txt-align-left {
+    text-align: left;
 }
 
 .login__title {

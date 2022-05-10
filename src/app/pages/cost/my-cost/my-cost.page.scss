@@ -1,0 +1,110 @@
+.slide-container {
+    width: 100%;
+    padding: 2em 0;
+    color: var(--white100);
+    background-color: var(--blue700);
+}
+
+.header__title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.slide {
+    width: 100%;
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .slide-item {
+        width: 100%;
+        height: 100%;
+        line-height: 2em;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slide__label {
+        font-size: 0.65em;
+        color: rgba($color: #ffffff, $alpha: 0.7);
+    }
+
+    .slide__value {
+        font-size: 1.2em;
+        font-weight: 400;
+    }
+
+    .slide__value__corrency {
+        font-size: 0.5em;
+        color: rgba($color: #ffffff, $alpha: 0.8);
+    }
+}
+
+ion-slides {
+    --bullet-background-active: var(--white100);
+}
+
+.cost-container {
+    width: 100%;
+    height: 100%;
+    margin-top: 2em;
+    padding: 1em;
+    padding-bottom: 5em;
+    color: var(--black);
+    background-color: var(--white100);
+    border-radius: 10px 10px 0px 0px;
+}
+
+.cost__title {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.cost-card__container {
+    width: 100%;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em 0;
+}
+
+.cost-card {
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cost-card__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0 0.8em;
+    .cost-card__icon {
+        width: 2.7em;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3em;
+        border-radius: 0.5em;
+        color: var(--white100);
+        background-color: var(--blue700);
+    }
+}
+.cost-card__title {
+    margin-top: 0;
+    font-size: .9em;
+    font-weight: 600;
+}
+
+.cost-card__description {
+    font-size: 0.7em;
+    color: rgba($color: #000000, $alpha: 0.7);
+}

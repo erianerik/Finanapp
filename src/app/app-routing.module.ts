@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'navigation',
     loadChildren: () => import('./navigation/navigation.module').then( m => m.NavigationPageModule)
   },
+  {
+    path: 'my-cost',
+    loadChildren: () => import('./pages/cost/my-cost/my-cost.module').then( m => m.MyCostPageModule)
+  },
 
 ];
 
