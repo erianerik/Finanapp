@@ -12,14 +12,15 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 // Montserrat
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap");
 
 * {
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
 
-ion-button, .button {
+ion-button,
+.button {
     --border-color: none;
     --background: none;
     --border-color: none;
@@ -38,7 +39,16 @@ ion-button, .button {
     // --box-shadow    Box shadow of the button
 }
 
-h1, h2, p, ul, li {
+ion-input {
+    --margin: 0;
+    --padding: 0;
+}
+
+h1,
+h2,
+p,
+ul,
+li {
     margin: 0;
     padding: 0;
 }
@@ -47,13 +57,26 @@ ul {
     list-style: none;
 }
 
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
 
 .container {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    padding: 15px;
-    padding-bottom: calc(15px + 2.5em);
+    min-height: auto;
+    padding: 1em;
+    padding-bottom: calc(1em + 2.5em);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -78,19 +101,25 @@ ul {
 }
 
 .input-label {
+    font-size: 0.9em;
+    color: var(--grey100);
+}
+
+.input-label--blue {
     color: var(--blue700);
-    font-weight: 600;
 }
 
 .input ~ .input-label {
     display: inline-block;
-    margin-top: 25px;
+    margin-top: 1em;
 }
 
 .input {
     width: 100%;
-    min-height: 25px;
-    line-height: 25px;
+    min-height: 2em;
+    line-height: 2em;
+    margin-top: 0.5em;
+    font-size: 0.9em;
     font-family: "Montserrat", sans-serif;
     border-bottom: 2px solid var(--blue700);
 
@@ -100,9 +129,13 @@ ul {
 }
 
 .form-actions__account {
-    color: var(--grey300);
+    margin-top: 1em;
     text-align: center;
+    font-size: .9em;
+    color: var(--grey300);
+
     .login-link {
+        display: block;
         color: var(--blue700);
         font-weight: 600;
         text-decoration: underline;
@@ -128,18 +161,18 @@ ul {
 
 .button {
     width: 100%;
-    height: 45px;
-    line-height: 45px;
+    height: 2.5em;
+    line-height: 2.5em;
     padding: 0 20px;
     border-radius: 20px;
     text-align: center;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .button-icon {
     display: inline-block;
-    padding: .9em 1em;
+    padding: 0.9em 1em;
     border-radius: 2em;
     background-color: var(--blue700);
 }

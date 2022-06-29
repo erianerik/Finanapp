@@ -1,4 +1,4 @@
-import { RegisterLoginPage } from './../register-login/register-login.page';
+import { RegisterLoginPage } from '../register-login/register-login.page';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

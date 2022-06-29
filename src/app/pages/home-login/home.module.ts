@@ -1,13 +1,11 @@
-import { NavigationPage } from './../../navigation/navigation.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
+import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 
-import { HomePage } from './home.page';
 
 @NgModule({
   imports: [
@@ -16,6 +14,6 @@ import { HomePage } from './home.page';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, NavigationPage]
+  declarations: [HomePage]
 })
-export class HomePageModule {}
+export class HomePageModule { }

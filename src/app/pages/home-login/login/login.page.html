@@ -1,0 +1,28 @@
+<ion-content>
+  <form class="container form-login">
+    <div class="form__login">
+
+      <fieldset class="login__data">
+        <div class="login__header">
+          <h2 class="login__header__title">FinanApp</h2>
+          <p  class="login__header__description">Seja bem vindo!</p>
+        </div>
+        
+        <div class="login__inputs">
+          <label class="input-label">Email</label>
+          <input type="email" name="email" class="input" placeholder="Ex.: jorge.augusto@email.com">
+         
+          <label class="input-label">Senha</label>
+          <input type="password" name="email" class="input" placeholder="Ex.: ********">
+        </div>
+
+        <a class="login__forget-password">Esqueceu a senha?</a>
+      </fieldset>
+
+      <fieldset class="login__action">
+        <ion-button class="button button--blue" (click)="navigateHome()">Login</ion-button>
+        <p class="form-actions__account">Não possui uma conta? <span class="login-link">Cadastrar-se</span></p>
+      </fieldset>
+    </div>
+  </form>
+</ion-content>

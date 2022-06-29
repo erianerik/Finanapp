@@ -1,0 +1,41 @@
+.form-register-login {
+    width: 100%;
+    height: auto;
+    padding: 0 1em;
+    padding-bottom: 1em;
+}
+
+.form-register-login__content {
+    width: 100%;
+    height: auto;
+}
+
+.login-register__header {
+    width: 100%;
+    padding: 1em 0;
+    text-align: left;
+    line-height: 2.3em;
+}
+
+.login-register__header__title {
+    font-size: 1.6rem;
+    color: var(--blue700);
+    font-weight: 600;
+}
+
+.login-register__header__description {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.form-login__term-acess {
+    margin: 1em auto;
+    font-size: .9em;
+    text-align: center;
+    color: var(--grey300);
+
+    .term-user-link {
+        color: var(--blue700);
+        font-weight: 600;
+    }
+}

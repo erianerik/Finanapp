@@ -1,0 +1,40 @@
+<ion-content>
+  <form class="form-register-login">
+    <div class="form-register-login__content">
+
+      <header class="login-register__header">
+        <h1 class="login-register__header__title">Registrar</h1>
+        <p class="login-register__header__description">Faça login da sua conta</p>
+      </header>
+
+      <fieldset class="form__content__inputs">
+        <label class="input-label">Usuário</label>
+        <input class="input" placeholder="Ex.: José Agusto">
+
+        <label class="input-label">Email</label>
+        <input class="input" inputmode="email" type="email" placeholder="Ex.: joseAugusto@email.com">
+
+        <label class="input-label">Salário</label>
+        <input class="input" inputmode="numeric" type="number" placeholder="Ex.: 1200.00">
+
+        <label class="input-label">Total de dinheiro guardado</label>
+        <input class="input" inputmode="numeric" type="number" placeholder="Ex.: 1200.00">
+
+        <label class="input-label">Senha</label>
+        <input class="input" type="password" placeholder="Ex.: *********">
+
+        <label class="input-label">Confirmar senha</label>
+        <input class="input" type="password" placeholder="Ex.: *********">
+
+        <p class="form-login__term-acess">Você está concordando com o nosso <span class="term-user-link">termo de uso de
+            privacidade</span></p>
+      </fieldset>
+    </div>
+
+    <div class="form__actions">
+      <ion-button class="button button--blue" routerLink="login">Cadastrar</ion-button>
+      <p class="form-actions__account">Já possui uma conta? <span class="login-link">logar</span></p>
+    </div>
+
+  </form>
+</ion-content>

@@ -1,15 +1,14 @@
-
 .home__container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 .home__title {
-    font-size: 25px;
-    font-weight: bold;
+    font-size: 1.8em;
+    font-weight: 600;
     color: var(--blue800);
 }
 
@@ -20,10 +19,9 @@
     .home__description {
         margin: 15px auto;
         max-width: 80%;
-        line-height: 25px;
+        line-height: 1.5em;
         overflow-wrap: break-word;
     }
-
 }
 
 .home__buttons {
@@ -32,6 +30,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
     flex-direction: column;
 }
