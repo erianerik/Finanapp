@@ -1,0 +1,39 @@
+<ion-content>
+  <form class="form-add-cost container">
+    <div class="form-add-cost__content">
+      <header class="login-register__header form-header">
+        <h1 class="form-title add-cost__title">Cadastrar Custo</h1>
+        <p class="login-register__header__description form-description">Preencha as informações a seguir</p>
+      </header>
+
+      <fieldset class="form__content__inputs">
+        <label class="input-label">Valor</label>
+        <input class="input" inputmode="numeric" type="number" placeholder="Ex.: 12.30">
+
+        <label class="input-label">Data</label>
+        <input class="input" inputmode="date" type="date" min="2022-01-01" placeholder="05/08/2022">
+
+        <label class="input-label">Descrição</label>
+        <ion-textarea class="input input-textarea" placeholder="Ex.: Presente para meu amigo José Augusto"></ion-textarea>
+
+        <div class="toggle-container">
+          <label class="input-label">Custo</label>
+          <ion-toggle class="input-toggle" name="custo" checked></ion-toggle>
+        </div>
+
+        <div class="toggle-container">
+          <label class="input-label">Possui parcela</label>
+          <ion-toggle class="input-toggle" name="possuiParcela" (click)="exibirParcela()"></ion-toggle>
+        </div>
+
+        <div class="margin-top05" *ngIf="possuiParcela">
+          <label class="input-label">Quantidade</label>
+          <input class="input" inputmode="numeric" type="number" name="quantidadParcela" minLength="1" maxlength="12" placeholder="Ex.: 8">
+        </div>
+      </fieldset>
+    </div>
+
+    <ion-button class="button button--blue" routerLink="">Cadastrar</ion-button>
+  </form>
+  <app-navigation></app-navigation>
+</ion-content>
