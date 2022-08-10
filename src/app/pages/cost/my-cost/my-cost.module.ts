@@ -1,3 +1,4 @@
+import { DetailsCostComponent } from './../details-cost/details-cost.component';
 import { NavigationPage } from './../../../navigation/navigation.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,6 +17,6 @@ import { MyCostPage } from './my-cost.page';
     IonicModule,
     MyCostPageRoutingModule
   ],
-  declarations: [MyCostPage, NavigationPage]
+  declarations: [MyCostPage, NavigationPage, DetailsCostComponent]
 })
-export class MyCostPageModule {}
+export class MyCostPageModule { }

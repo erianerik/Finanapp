@@ -70,6 +70,10 @@ input {
     padding: 0;
 }
 
+ion-slides {
+    z-index: 1;
+}
+
 .container {
     box-sizing: border-box;
     width: 100%;
@@ -210,6 +214,10 @@ input {
 .button--outline--blue {
     border: 1px solid var(--blue700);
     color: var(--blue700);
+}
+
+.button--transparent {
+    color: var(--grey100);
 }
 
 .form-header {

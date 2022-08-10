@@ -46,6 +46,7 @@
 
 ion-slides {
     --bullet-background-active: var(--white100);
+    z-index: 0;
 }
 
 .cost-container {
