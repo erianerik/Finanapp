@@ -1,7 +1,8 @@
-<ion-content>
+<ion-content *ngIf="showDetail">
   <div class="detail-container">
     <div class="detail-container__box">
       <div class="detail-content">
+        <ion-icon name="close-outline" (click)="closeDetail()"></ion-icon>
         <header class="detail-content__header">
           <div class="header__icon">
             <ion-icon name="bandage-outline"></ion-icon>
@@ -20,25 +21,25 @@
           <label class="detail-description__title">Valor: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">R$ 12.00</p>
           <input type="number" name="value" class="input" value="12.00" *ngIf="isUpdate">
-          
+
           <label class="detail-description__title">Data: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">05/08/2022</p>
           <input type="date" name="date" class="input" value="05/08/2022" *ngIf="isUpdate">
-          
+
           <label class="detail-description__title">Custo: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">Sim</p>
           <input type="text" name="date" class="input" value="teste" *ngIf="isUpdate">
-          
+
           <label class="detail-description__title">Próxima parcela: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">14/05/2022</p>
           <input type="text" name="date" class="input" value="teste" *ngIf="isUpdate">
-          
+
           <label class="detail-description__title">Descrição: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">Presente para o meu amigo José Augusto</p>
           <input type="text" name="date" class="input" value="teste" *ngIf="isUpdate">
 
         </div>
-        <ion-button class="update-button"  *ngIf="  isUpdate">Detalhes</ion-button>
+        <ion-button class="update-button" *ngIf="  isUpdate">Detalhes</ion-button>
       </div>
     </div>
   </div>

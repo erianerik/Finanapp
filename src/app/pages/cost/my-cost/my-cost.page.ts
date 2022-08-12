@@ -1,3 +1,4 @@
+import { BroadcastService } from './../../../service/broadcast.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyCostPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _broadcast: BroadcastService
+  ) { }
 
   ngOnInit() {
+  }
+
+  goToDetail() {
+    this._broadcast.setDetailSubject("Hellow");
   }
 
 }
