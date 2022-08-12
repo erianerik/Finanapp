@@ -1,0 +1,94 @@
+.profile {
+    min-height: 13em;
+    align-items: center;
+    color: var(--white);
+    background-color: var(--blue700);
+    border-radius: 0 0 1em 1em;
+    position: relative;
+}
+
+.profile-edit {
+    position: absolute;
+    right: 1em;
+    top: 0.7em;
+
+    ion-icon {
+        font-size: 1.2em;
+    }
+}
+
+.profile__title {
+    padding: 1em;
+    font-size: 1em;
+    text-align: center;
+}
+
+.profile__header {
+    width: 100%;
+    height: calc(13em - 6em);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.profile__image {
+    font-size: 5em;
+}
+
+.user__name {
+    margin-top: 0.2em;
+}
+
+.profile__data {
+    width: 100%;
+    height: calc(100% - 13em);
+    margin-top: 0.8em;
+    padding: 1em;
+    padding-bottom: 4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    :first-child {
+        margin-top: 0;
+    }
+}
+
+.profile__card {
+    width: 100%;
+    min-height: 4em;
+    margin-top: 1em;
+    border-bottom: 1px solid var(--grey100);
+
+    .profile__card-header {
+        display: flex;
+        align-items: center;
+        color: var(--grey100);
+
+        .card-header__item {
+            font-size: 1.6em;
+        }
+
+        .card-header__label {
+            font-size: 0.8em;
+            margin-left: 0.5em;
+        }
+    }
+    .profile__card-data {
+        font-size: 0.9em;
+        font-weight: 500;
+        padding-left: 2.3em;
+    }
+
+    .input {
+        margin: 0;
+    }
+
+}
+
+.logout {
+    width: 80%;
+    margin: 1.3em auto;
+}

@@ -96,6 +96,12 @@ ion-slides {
     position: relative;
 }
 
+.ds-flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .margin-top05 {
     margin-top: 0.5em;
 }

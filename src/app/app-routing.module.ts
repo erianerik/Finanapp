@@ -38,6 +38,10 @@ const routes: Routes = [
     path: 'cost-chart',
     loadChildren: () => import('./pages/cost-chart/cost-chart.module').then( m => m.CostChartPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
 
 
 

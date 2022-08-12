@@ -30,4 +30,10 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
     this.showDetail = false;
   }
 
+  showUpdate(isUpdate: boolean) {
+    this.isUpdate = isUpdate;
+  }
+
+
+
 }

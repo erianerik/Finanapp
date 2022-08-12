@@ -28,6 +28,18 @@
 .detail-content {
     width: 100%;
     padding: 1.5em 1em;
+    position: relative;
+}
+
+.close-datail {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+
+    ion-icon {
+        font-size: 1.1em;
+        font-weight: 700;
+    }
 }
 
 .detail-content__header {
@@ -78,7 +90,8 @@
 
 .detail-description {
     .input {
-        margin-bottom: 1em;
+        margin: 0;
+        margin-bottom: 0.5em;
     }
 }
 

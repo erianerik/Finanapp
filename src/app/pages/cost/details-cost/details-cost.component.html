@@ -1,8 +1,10 @@
 <ion-content *ngIf="showDetail">
   <div class="detail-container">
-    <div class="detail-container__box">
+    <div class="detail-container__box ds-flex-center">
       <div class="detail-content">
-        <ion-icon name="close-outline" (click)="closeDetail()"></ion-icon>
+        <span class="close-datail">
+          <ion-icon name="close-outline" (click)="closeDetail()"></ion-icon>
+        </span>
         <header class="detail-content__header">
           <div class="header__icon">
             <ion-icon name="bandage-outline"></ion-icon>
@@ -12,8 +14,10 @@
         </header>
 
         <div class="detail-actions">
-          <ion-button class="detail-button">Detalhes</ion-button>
-          <ion-button class="detail-button detail-button--transparent">Editar</ion-button>
+          <ion-button class="detail-button" [ngClass]="{'detail-button--transparent': isUpdate}"
+            (click)="showUpdate(false)">Detalhes</ion-button>
+          <ion-button class="detail-button" [ngClass]="{'detail-button--transparent': !isUpdate}"
+            (click)="showUpdate(true)">Editar</ion-button>
           <ion-button class="detail-button detail-button--transparent">Excluir</ion-button>
         </div>
 
@@ -39,7 +43,7 @@
           <input type="text" name="date" class="input" value="teste" *ngIf="isUpdate">
 
         </div>
-        <ion-button class="update-button" *ngIf="  isUpdate">Detalhes</ion-button>
+        <ion-button class="update-button" *ngIf="isUpdate">Atualizar</ion-button>
       </div>
     </div>
   </div>
