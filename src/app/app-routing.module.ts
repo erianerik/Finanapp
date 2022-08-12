@@ -34,7 +34,11 @@ const routes: Routes = [
   {
     path: 'add-cost',
     loadChildren: () => import('./pages/cost/add-cost/add-cost.module').then( m => m.AddCostPageModule)
+  },  {
+    path: 'cost-chart',
+    loadChildren: () => import('./pages/cost-chart/cost-chart.module').then( m => m.CostChartPageModule)
   },
+
 
 
 ];
