@@ -1,5 +1,5 @@
 <ion-content>
-  <form class="form-register-login ds-flex-center">
+  <form class="form-register-login ds-flex-center" [formGroup]="cadastroForm">
     <div class="form-register-login__content">
 
       <header class="login-register__header form-header">
@@ -9,22 +9,22 @@
 
       <fieldset class="form__content__inputs">
         <label class="input-label">Usuário</label>
-        <input class="input" placeholder="Ex.: José Agusto">
+        <input class="input" placeholder="Ex.: José Agusto" formControlName="usuario">
 
         <label class="input-label">Email</label>
-        <input class="input" inputmode="email" type="email" placeholder="Ex.: joseAugusto@email.com">
+        <input class="input" inputmode="email" type="email" placeholder="Ex.: joseAugusto@email.com" formControlName="email">
 
         <label class="input-label">Salário</label>
-        <input class="input" inputmode="numeric" type="number" placeholder="Ex.: 1200.00">
+        <input class="input" inputmode="numeric" type="number" placeholder="Ex.: 1200.00" formControlName="salario">
 
         <label class="input-label">Total de dinheiro guardado</label>
-        <input class="input" inputmode="numeric" type="number" placeholder="Ex.: 1200.00">
+        <input class="input" inputmode="numeric" type="number" placeholder="Ex.: 1200.00" formControlName="dinheiroGuardado">
 
         <label class="input-label">Senha</label>
-        <input class="input" type="password" placeholder="Ex.: *********">
+        <input class="input" type="password" placeholder="Ex.: *********" formControlName="confirmarSenha">
 
         <label class="input-label">Confirmar senha</label>
-        <input class="input" type="password" placeholder="Ex.: *********">
+        <input class="input" type="password" placeholder="Ex.: *********" formControlName="senha">
 
         <p class="form-login__term-acess">Você está concordando com o nosso <span class="term-user-link">termo de uso de
             privacidade</span></p>
@@ -32,7 +32,7 @@
     </div>
 
     <div class="form__actions">
-      <ion-button class="button button--blue" routerLink="login">Cadastrar</ion-button>
+      <ion-button class="button button--blue" (click)="cadastrarUsuario()">Cadastrar</ion-button>
       <p class="form-actions__account">Já possui uma conta? <span class="login-link">logar</span></p>
     </div>
 
