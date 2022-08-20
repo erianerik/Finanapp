@@ -1,4 +1,4 @@
-import { BroadcastService } from './../../../service/broadcast.service';
+import { BroadcastService } from 'src/app/service/broadcast/broadcast.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

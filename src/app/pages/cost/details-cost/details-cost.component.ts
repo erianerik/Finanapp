@@ -1,5 +1,5 @@
-import { BroadcastService } from './../../../service/broadcast.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { BroadcastService } from 'src/app/service/broadcast/broadcast.service';
 
 @Component({
   selector: 'details-cost',
