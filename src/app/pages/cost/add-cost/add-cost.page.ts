@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Custo } from 'src/app/model/Custo';
+import { SessionStorageService } from 'src/app/service/sessionStorage/session-storage.service';
 
 @Component({
   selector: 'app-add-cost',
@@ -7,18 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddCostPage implements OnInit {
 
+  custo = new Custo();
   possuiParcela = false;
 
-  constructor() { }
+  constructor(
+    private _sessionStorage: SessionStorageService
+  ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   exibirParcela() {
-    console.log('oi');
     this.possuiParcela = !this.possuiParcela;
-    console.log(this.possuiParcela);
+  }
 
+  adicionarCusto(custoForm: any) {
+    console.log('valorFormulário', custoForm.value);
   }
 
 }

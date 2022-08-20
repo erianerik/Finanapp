@@ -15,7 +15,6 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
     private _broadcast: BroadcastService
   ) {
     this._broadcast.detailSubjetct.subscribe((detail: string) => {
-      console.log(detail);
       this.showDetail = true;
     });
   }

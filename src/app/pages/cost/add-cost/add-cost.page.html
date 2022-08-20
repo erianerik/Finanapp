@@ -1,5 +1,5 @@
 <ion-content>
-  <form class="form-add-cost container">
+  <form class="form-add-cost container" #custoForm="ngForm" (ngSubmit)="adicionarCusto(custoForm)">
     <div class="form-add-cost__content">
       <header class="login-register__header form-header">
         <h1 class="form-title add-cost__title">Cadastrar Custo</h1>
@@ -8,32 +8,32 @@
 
       <fieldset class="form__content__inputs">
         <label class="input-label">Valor</label>
-        <input class="input" inputmode="numeric" type="number" placeholder="Ex.: 12.30">
+        <input class="input" type="number" name="valor" inputmode="numeric" placeholder="Ex.: 12.30" [(ngModel)]="custo.valor">
 
         <label class="input-label">Data</label>
-        <input class="input" inputmode="date" type="date" min="2022-01-01" placeholder="05/08/2022">
+        <input class="input" type="date" name="data"  min="2022-01-01" inputmode="date" placeholder="05/08/2022" [(ngModel)]="custo.data">
 
         <label class="input-label">Descrição</label>
-        <ion-textarea class="input input-textarea" placeholder="Ex.: Presente para meu amigo José Augusto"></ion-textarea>
+        <ion-textarea class="input input-textarea" name="descricao" placeholder="Ex.: Presente para meu amigo José Augusto" [(ngModel)]="custo.descricao"></ion-textarea>
 
         <div class="toggle-container">
           <label class="input-label">Custo</label>
-          <ion-toggle class="input-toggle" name="custo" checked></ion-toggle>
+          <ion-toggle class="input-toggle" name="custo" checked [value]="custo.isCusto" [(ngModel)]="custo.isCusto"></ion-toggle>
         </div>
 
         <div class="toggle-container">
           <label class="input-label">Possui parcela</label>
-          <ion-toggle class="input-toggle" name="possuiParcela" (click)="exibirParcela()"></ion-toggle>
+          <ion-toggle class="input-toggle" name="possuiParcela" (click)="exibirParcela()" [value]="custo.possuiParcela"></ion-toggle>
         </div>
 
         <div class="margin-top05" *ngIf="possuiParcela">
           <label class="input-label">Quantidade</label>
-          <input class="input" inputmode="numeric" type="number" name="quantidadParcela" minLength="1" maxlength="12" placeholder="Ex.: 8">
+          <input class="input" type="number" inputmode="numeric"  name="quantidadParcela" minLength="1" maxlength="12" placeholder="Ex.: 8" [(ngModel)]="custo.quantidadeParcela">
         </div>
       </fieldset>
     </div>
 
-    <ion-button class="button button--blue" routerLink="">Cadastrar</ion-button>
+    <ion-button type="submit" class="button button--blue">Cadastrar</ion-button>
   </form>
   <app-navigation></app-navigation>
 </ion-content>

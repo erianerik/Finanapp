@@ -12,7 +12,7 @@ import { UsuarioService } from 'src/app/service/usuario/usuario.service';
 export class ProfilePage implements OnInit {
 
   dadosPerfil: DadosPerfil;
-  idUsuario;
+  idUsuario: any;
   isUpdate = false;
 
   constructor(
@@ -22,9 +22,7 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.carregarSessionStorage();
-    setTimeout(() => this.carregarDadosPerfil(), 3000);
-    console.log('Dados usuário: ', this.dadosPerfil);
-
+    setTimeout(() => this.carregarDadosPerfil(), 400);
   }
 
   async carregarSessionStorage() {
@@ -32,11 +30,7 @@ export class ProfilePage implements OnInit {
   }
 
   carregarDadosPerfil() {
-    console.log(this.idUsuario);
-    this._usuarioService.buscarDadosPerfilUsuario(this.idUsuario).subscribe((dadosPerfil => {
-      this.dadosPerfil = dadosPerfil;
-      console.log('dadosPerfil', dadosPerfil);
-    }));
+    this._usuarioService.buscarDadosPerfilUsuario(this.idUsuario).subscribe((dadosPerfil => this.dadosPerfil = dadosPerfil));
   }
 
   update() {

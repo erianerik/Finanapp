@@ -21,9 +21,7 @@ export class LoginPage implements OnInit {
     private _usuarioService: UsuarioService,
   ) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   async logForm(loginForm: any) {
     this._usuarioService.logarUsuario(loginForm.value).subscribe((result) => {
