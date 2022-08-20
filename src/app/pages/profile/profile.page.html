@@ -8,8 +8,8 @@
     <header class="profile__header">
       <ion-icon class="profile__image" name="person-circle-outline"></ion-icon>
 
-      <h2 class="user__name">Erian</h2>
-      <p class="user__job">Programador JR</p>
+      <h2 class="user__name">{{ dadosPerfil?.nome }}</h2>
+      <p class="user__job">{{ dadosPerfil?.cargo }}</p>
     </header>
   </div>
 
@@ -19,7 +19,7 @@
         <ion-icon class="card-header__item" name="happy-outline"></ion-icon>
         <label for="" class="card-header__label">nome:</label>
       </header>
-      <p class="profile__card-data" *ngIf="!isUpdate">Erian Erik dos Santos Silva</p>
+      <p class="profile__card-data" *ngIf="!isUpdate">{{ dadosPerfil?.nome }}</p>
       <input class="input" value="Erian Erik dos Santos Silva" *ngIf="isUpdate">
     </div>
 
@@ -28,7 +28,7 @@
         <ion-icon class="card-header__item" name="mail-outline"></ion-icon>
         <label for="" class="card-header__label">Email:</label>
       </header>
-      <p class="profile__card-data" *ngIf="!isUpdate">erianerik@gmail.com</p>
+      <p class="profile__card-data" *ngIf="!isUpdate">{{ dadosPerfil?.email }}</p>
       <input type="email" class="input" value="erianerik@gmail.com" *ngIf="isUpdate">
     </div>
 
@@ -37,7 +37,7 @@
         <ion-icon class="card-header__item" name="cash-outline"></ion-icon>
         <label for="" class="card-header__label">Salário:</label>
       </header>
-      <p class="profile__card-data" *ngIf="!isUpdate">R$ 2500,00</p>
+      <p class="profile__card-data" *ngIf="!isUpdate">{{ dadosPerfil?.salario }}</p>
       <input type="number" class="input" value="2500.00" *ngIf="isUpdate">
     </div>
 

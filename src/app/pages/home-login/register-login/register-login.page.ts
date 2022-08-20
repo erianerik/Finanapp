@@ -26,11 +26,12 @@ export class RegisterLoginPage implements OnInit {
   criarFormGrupo() {
     this.cadastroForm = new FormGroup({
       usuario: new FormControl(''),
+      cargo: new FormControl(''),
       email: new FormControl(''),
       salario: new FormControl(''),
       dinheiroGuardado: new FormControl(''),
       confirmarSenha: new FormControl(''),
-      senha: new FormControl('')
+      senha: new FormControl(''),
     });
   }
 
@@ -39,6 +40,7 @@ export class RegisterLoginPage implements OnInit {
     const cadastroForm = this.cadastroForm.controls;
 
     usuario.nome = cadastroForm.usuario.value;
+    usuario.cargo = cadastroForm.cargo.value;
     usuario.salario = cadastroForm.salario.value;
     usuario.dinheiroGuardado = cadastroForm.dinheiroGuardado.value;
     usuario.perfil.email = cadastroForm.email.value;
