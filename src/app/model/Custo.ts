@@ -1,5 +1,6 @@
 export class Custo {
     id: number | null;
+    idUsuario: number;
     valor: number;
     tipo: string;
     descricao: string;
@@ -9,7 +10,8 @@ export class Custo {
     quantidadeParcela: number;
 
     constructor() {
-        this.tipo = '';
+        this.id = null;
+        this.tipo = 'ROUPA';
         this.descricao = '';
         this.possuiParcela = false;
         this.isCusto = true;
