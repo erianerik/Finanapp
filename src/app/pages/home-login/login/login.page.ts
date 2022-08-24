@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { Login } from 'src/app/model/Login';
-import { SessionStorageService } from 'src/app/service/sessionStorage/session-storage.service';
+import { SessionStorageService } from 'src/app/service/session-storage/session-storage.service';
 import { UsuarioService } from 'src/app/service/usuario/usuario.service';
 
 @Component({
@@ -26,6 +26,8 @@ export class LoginPage implements OnInit {
   async logForm(loginForm: any) {
     this._usuarioService.logarUsuario(loginForm.value).subscribe((result) => {
       if (result.isAutenticado === false) { return; }
+      console.log(result);
+      
       this._sessionStorage.adicionarItemSession(result.idUsuario);
       this.router.navigate(['profile']);
     });

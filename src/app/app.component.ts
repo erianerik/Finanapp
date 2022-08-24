@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
-import { SessionStorageService } from './service/sessionStorage/session-storage.service';
+import { SessionStorageService } from './service/session-storage/session-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +15,5 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
-    
   }
 }

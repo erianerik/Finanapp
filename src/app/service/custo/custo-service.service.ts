@@ -2,13 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Custo } from 'src/app/model/Custo';
+import { ItensHome } from 'src/app/model/ItensHome';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustoServiceService {
+export class CustoService {
 
   private baseUrl = 'http://localhost:8080/custos';
+  private buscarCustoUrl = '/buscar';
 
   constructor(
     private _httpCliente: HttpClient
@@ -16,5 +18,9 @@ export class CustoServiceService {
 
   cadastrarCusto(custoViewModel: Custo): Observable<Custo> {
     return this._httpCliente.post<Custo>(this.baseUrl, custoViewModel);
+  }
+
+  buscarCustos(idUsuario: any): Observable<ItensHome> {
+    return this._httpCliente.get<ItensHome>(this.baseUrl.concat("/" + idUsuario));
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { DadosPerfil } from 'src/app/model/DadosPerfil';
-import { SessionStorageService } from 'src/app/service/sessionStorage/session-storage.service';
+import { SessionStorageService } from 'src/app/service/session-storage/session-storage.service';
 import { UsuarioService } from 'src/app/service/usuario/usuario.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.carregarSessionStorage();
-    setTimeout(() => this.carregarDadosPerfil(), 400);
+    setTimeout(() => this.carregarDadosPerfil(), 500);
   }
 
   async carregarSessionStorage() {
@@ -30,7 +30,9 @@ export class ProfilePage implements OnInit {
   }
 
   carregarDadosPerfil() {
+    console.log(this.idUsuario);
     this._usuarioService.buscarDadosPerfilUsuario(this.idUsuario).subscribe((dadosPerfil => this.dadosPerfil = dadosPerfil));
+    console.log(this.dadosPerfil);
   }
 
   update() {

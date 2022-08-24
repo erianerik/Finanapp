@@ -13,8 +13,7 @@ import { DadosPerfil } from 'src/app/model/DadosPerfil';
 export class UsuarioService {
 
   private baseUrl = 'http://localhost:8080/usuario';
-  private urlLogin = '/logar'
-  private urlBuscarPerfil = '/buscar/perfil';
+  private autenticarUsuarioUrl = '/autenticarUsuario'
 
   constructor(
     private httpCliente: HttpClient,
@@ -25,10 +24,10 @@ export class UsuarioService {
   }
 
   logarUsuario(login: Login): Observable<any> {
-    return this.httpCliente.post<Login>(this.baseUrl.concat(this.urlLogin), login);
+    return this.httpCliente.post<Login>(this.baseUrl.concat(this.autenticarUsuarioUrl), login);
   }
 
-  buscarDadosPerfilUsuario(idPerfil: number): Observable<any> {
-    return this.httpCliente.post<DadosPerfil>(this.baseUrl.concat(this.urlBuscarPerfil), idPerfil);
+  buscarDadosPerfilUsuario(idUsuario: any): Observable<any> {
+    return this.httpCliente.get<DadosPerfil>(this.baseUrl.concat("/", idUsuario));
   }
 }

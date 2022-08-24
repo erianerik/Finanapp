@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Custo } from 'src/app/model/Custo';
-import { CustoServiceService } from 'src/app/service/custo/custo-service.service';
-import { SessionStorageService } from 'src/app/service/sessionStorage/session-storage.service';
+import { CustoService } from 'src/app/service/custo/custo-service.service';
+import { SessionStorageService } from 'src/app/service/session-storage/session-storage.service';
 
 @Component({
   selector: 'app-add-cost',
@@ -16,7 +16,7 @@ export class AddCostPage implements OnInit {
 
   constructor(
     private _sessionStorage: SessionStorageService,
-    private _custoService: CustoServiceService
+    private _custoService: CustoService
   ) { }
 
   ngOnInit() {
