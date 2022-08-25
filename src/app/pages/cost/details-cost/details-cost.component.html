@@ -18,7 +18,7 @@
             (click)="showUpdate(false)">Detalhes</ion-button>
           <ion-button class="detail-button" [ngClass]="{'detail-button--transparent': !isUpdate}"
             (click)="showUpdate(true)">Editar</ion-button>
-          <ion-button class="detail-button detail-button--transparent">Excluir</ion-button>
+          <ion-button class="detail-button detail-button--transparent" (click)="excluirCusto()">Excluir</ion-button>
         </div>
 
         <div class="detail-description">

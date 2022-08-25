@@ -11,6 +11,7 @@ export class CustoService {
 
   private baseUrl = 'http://localhost:8080/custos';
   private buscarCustoUrl = 'buscar';
+  private excluirUrl = 'excluir';
 
   constructor(
     private _httpCliente: HttpClient
@@ -30,5 +31,9 @@ export class CustoService {
 
   atualizarCusto(custoViewModel: Custo): Observable<Custo> {
     return this._httpCliente.put<Custo>(this.baseUrl, custoViewModel);
+  }
+ 
+  deletarCusto(idUsuario: any, idCusto: number): Observable<Custo> {
+    return this._httpCliente.delete<Custo>(`${this.baseUrl}/${idUsuario}/${this.excluirUrl}/${idCusto}`);
   }
 }
