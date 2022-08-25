@@ -47,6 +47,13 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
     this._custoService.buscarCustoId(this.idUsuario, idCusto).subscribe(((result:Custo)  => this.custo = result));
   }
 
+  atualizarCusto(form: any) {
+    this.custo.idUsuario = this.idUsuario;
+    this._custoService.atualizarCusto(this.custo).subscribe((result => {
+      console.log(result);
+    }))
+  }
+
   showUpdate(isUpdate: boolean) {
     this.isUpdate = isUpdate;
   }

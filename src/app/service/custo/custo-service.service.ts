@@ -27,4 +27,8 @@ export class CustoService {
   buscarCustoId(idUsuario: any, idCusto: number): Observable<Custo> {
     return this._httpCliente.get<Custo>(`${this.baseUrl}/${idUsuario}/${this.buscarCustoUrl}/${idCusto}`);
   }
+
+  atualizarCusto(custoViewModel: Custo): Observable<Custo> {
+    return this._httpCliente.put<Custo>(this.baseUrl, custoViewModel);
+  }
 }

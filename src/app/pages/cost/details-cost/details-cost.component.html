@@ -1,5 +1,5 @@
 <ion-content *ngIf="showDetail">
-  <div class="detail-container">
+  <form #form="ngForm" (ngSubmit)="atualizarCusto(form)" class="detail-container">
     <div class="detail-container__box ds-flex-center">
       <div class="detail-content">
         <span class="close-datail">
@@ -24,15 +24,15 @@
         <div class="detail-description">
           <label class="detail-description__title">Valor: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">R$ {{ custo.valor }}</p>
-          <input type="number" name="value" class="input" [value]="custo.valor" *ngIf="isUpdate">
+          <input type="number" name="valor" class="input" [(ngModel)]="custo.valor" *ngIf="isUpdate">
 
           <label class="detail-description__title">Data: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.data }}</p>
-          <input type="text" name="date" class="input" [value]="custo.data" *ngIf="isUpdate">
+          <input type="text" name="data" class="input" [(ngModel)]="custo.data" *ngIf="isUpdate">
 
           <label class="detail-description__title">Custo: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.gasto ? 'Sim' : 'Não' }}</p>
-          <input type="text" name="date" class="input" [value]="custo.gasto" *ngIf="isUpdate">
+          <input type="text" name="gasto" class="input" [(ngModel)]="custo.gasto" *ngIf="isUpdate">
 
           <div *ngIf="custo.possuiParcela">
             <label class="detail-description__title">Próxima parcela: </label>
@@ -42,11 +42,11 @@
 
           <label class="detail-description__title">Descrição: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.descricao }}</p>
-          <ion-textarea class="input input-textarea" name="descricao" [value]="custo.descricao" *ngIf="isUpdate"></ion-textarea>
+          <ion-textarea class="input input-textarea" name="descricao" [(ngModel)]="custo.descricao" *ngIf="isUpdate"></ion-textarea>
 
         </div>
-        <ion-button class="update-button" *ngIf="isUpdate">Atualizar</ion-button>
+        <ion-button type="submit" class="update-button" *ngIf="isUpdate">Atualizar</ion-button>
       </div>
     </div>
-  </div>
+  </form>
 </ion-content>
