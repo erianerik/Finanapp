@@ -6,15 +6,15 @@ export class Custo {
     descricao: string;
     data: string;
     possuiParcela: boolean;
-    isCusto: boolean;
+    gasto: boolean;
     quantidadeParcela: number;
-
+    proximaParcela: string;
     constructor() {
         this.id = null;
         this.tipo = 'ROUPA';
         this.descricao = '';
         this.possuiParcela = false;
-        this.isCusto = true;
+        this.gasto = true;
         this.quantidadeParcela = 0;
     }
 }

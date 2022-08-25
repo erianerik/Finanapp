@@ -10,7 +10,7 @@
             <ion-icon name="bandage-outline"></ion-icon>
           </div>
 
-          <h2 class="detail-content__header__title">Mercado</h2>
+          <h2 class="detail-content__header__title">{{ custo.tipo }}</h2>
         </header>
 
         <div class="detail-actions">
@@ -23,24 +23,26 @@
 
         <div class="detail-description">
           <label class="detail-description__title">Valor: </label>
-          <p class="detail-description__description" *ngIf="!isUpdate">R$ 12.00</p>
-          <input type="number" name="value" class="input" value="12.00" *ngIf="isUpdate">
+          <p class="detail-description__description" *ngIf="!isUpdate">R$ {{ custo.valor }}</p>
+          <input type="number" name="value" class="input" [value]="custo.valor" *ngIf="isUpdate">
 
           <label class="detail-description__title">Data: </label>
-          <p class="detail-description__description" *ngIf="!isUpdate">05/08/2022</p>
-          <input type="date" name="date" class="input" value="05/08/2022" *ngIf="isUpdate">
+          <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.data }}</p>
+          <input type="text" name="date" class="input" [value]="custo.data" *ngIf="isUpdate">
 
           <label class="detail-description__title">Custo: </label>
-          <p class="detail-description__description" *ngIf="!isUpdate">Sim</p>
-          <input type="text" name="date" class="input" value="teste" *ngIf="isUpdate">
+          <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.gasto ? 'Sim' : 'Não' }}</p>
+          <input type="text" name="date" class="input" [value]="custo.gasto" *ngIf="isUpdate">
 
-          <label class="detail-description__title">Próxima parcela: </label>
-          <p class="detail-description__description" *ngIf="!isUpdate">14/05/2022</p>
-          <input type="text" name="date" class="input" value="teste" *ngIf="isUpdate">
+          <div *ngIf="custo.possuiParcela">
+            <label class="detail-description__title">Próxima parcela: </label>
+            <p class="detail-description__description" *ngIf="!isUpdate">-</p>
+            <input type="text" name="date" class="input" *ngIf="isUpdate">
+          </div>
 
           <label class="detail-description__title">Descrição: </label>
-          <p class="detail-description__description" *ngIf="!isUpdate">Presente para o meu amigo José Augusto</p>
-          <input type="text" name="date" class="input" value="teste" *ngIf="isUpdate">
+          <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.descricao }}</p>
+          <ion-textarea class="input input-textarea" name="descricao" [value]="custo.descricao" *ngIf="isUpdate"></ion-textarea>
 
         </div>
         <ion-button class="update-button" *ngIf="isUpdate">Atualizar</ion-button>

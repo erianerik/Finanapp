@@ -25,8 +25,8 @@ export class MyCostPage implements OnInit {
     setTimeout(() => this.carregarCustos(this.idUsuario), 500);
   }
 
-  goToDetail() {
-    this._broadcast.setDetailSubject("Hellow");
+  irDetalheCusto(idCusto: number) {
+    this._broadcast.setDetailSubject(idCusto);
   }
 
   async carregarIdUsuario() {
@@ -35,5 +35,7 @@ export class MyCostPage implements OnInit {
 
   carregarCustos(idUsuario: any) {
     this._custoService.buscarCustos(idUsuario).subscribe((result) => this.itensHome = result);
+
+
   }
 }

@@ -10,7 +10,7 @@ import { ItensHome } from 'src/app/model/ItensHome';
 export class CustoService {
 
   private baseUrl = 'http://localhost:8080/custos';
-  private buscarCustoUrl = '/buscar';
+  private buscarCustoUrl = 'buscar';
 
   constructor(
     private _httpCliente: HttpClient
@@ -22,5 +22,9 @@ export class CustoService {
 
   buscarCustos(idUsuario: any): Observable<ItensHome> {
     return this._httpCliente.get<ItensHome>(this.baseUrl.concat("/" + idUsuario));
+  }
+
+  buscarCustoId(idUsuario: any, idCusto: number): Observable<Custo> {
+    return this._httpCliente.get<Custo>(`${this.baseUrl}/${idUsuario}/${this.buscarCustoUrl}/${idCusto}`);
   }
 }
