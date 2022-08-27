@@ -9,6 +9,9 @@ import { SessionStorageService } from './service/session-storage/session-storage
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
+  exibirLoading = false;
+
   constructor(
     private router: Router,
     private _sessionStorage: SessionStorageService
