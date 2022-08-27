@@ -1,5 +1,5 @@
 <ion-content>
-  <div class="container chart-container ds-flex-center">
+  <div class="chart-container ds-flex-center">
     <div class="chart-data-container">
       <header class="chart__header">
         <a href="" class="chart__header__option selected">Dia</a>
@@ -12,7 +12,7 @@
       <div class="chart-data__doughnut">
         <header class="chart-data__doughnut__header">
           <h2 class="doughnut__title">Hoje</h2>
-          <h3 class="doughnut__cost">Custo: R$ 20,00</h3>
+          <h3 class="doughnut__cost">Custo: R$ {{ itensHome.totalGasto }}</h3>
         </header>
         <canvas #doughnutCanvas class="cost-chart-style"></canvas>
       </div>
@@ -20,14 +20,14 @@
     </div>
 
     <div class="chart-data__progress-bar">
-      <div class="progress-bar">
+      <div class="progress-bar" *ngFor="let custo of estatitisca">
         <div class="progress-bar__item">
           <ion-icon name="fast-food-outline"></ion-icon>
-          <h3 class="progress-bar__item__name">Comida</h3>
+          <h3 class="progress-bar__item__name">{{ custo.nome }}</h3>
         </div>
 
-        <span class="progress-bar__percent">80%</span>
-        <span class="progress-bar__item-cost">R$ 2500</span>
+        <span class="progress-bar__percent">{{ custo.porcetagem }}%</span>
+        <span class="progress-bar__item-cost">R$ {{ custo.valor }}</span>
       </div>
     </div>
   </div>
