@@ -1,11 +1,11 @@
 <ion-content>
   <div class="container home">
-    <h2 class="home__month">Maio</h2>
+    <h2 class="home__month">{{ itensHome.mesCusto }}</h2>
     <div class="header__container">
       <div class="header__cost__container">
         <header class="header">
           <h1 class="header__title">Total a guardar</h1>
-          <p class="header__cost">R$ 65,000.00</p>
+          <p class="header__cost">R$ {{ itensHome.totalGuardar }}</p>
         </header>
 
         <ion-icon name="stats-chart-outline" class="button-icon icon--white"></ion-icon>
@@ -15,7 +15,7 @@
         <div class="statistisc__container">
           <div class="statistisc__value">
             <h2 class="statistic__title">Custos</h2>
-            <p class="statistic__value">R$ 1000,00</p>
+            <p class="statistic__value">R$ {{ itensHome.totalGasto}}</p>
           </div>
 
           <div class="statistisc__value">
@@ -28,53 +28,16 @@
       </div>
     </div>
 
-
-    <div class="cost-container">
-      <div class="cost__card">
+    <div class="cost-container" *ngIf="estatitisca">
+      <div class="cost__card" *ngFor="let estatitisca of estatitisca">
         <div class="cost__card__header">
           <ion-icon name="ticket-outline"></ion-icon>
-          <span class="card__item__porcent">3%</span>
+          <span class="card__item__porcent">{{ estatitisca.porcetagem }}%</span>
         </div>
 
         <div class="cost__card__body">
-          <span class="card__item__value">1000,00</span>
-          <h2 class="card__item__type-title">Mercado</h2>
-        </div>
-      </div>
-
-      <div class="cost__card">
-        <div class="cost__card__header">
-          <ion-icon name="ticket-outline"></ion-icon>
-          <span class="card__item__porcent">3%</span>
-        </div>
-
-        <div class="cost__card__body">
-          <span class="card__item__value">1000,00</span>
-          <h2 class="card__item__type-title">Roupa</h2>
-        </div>
-      </div>
-
-      <div class="cost__card">
-        <div class="cost__card__header">
-          <ion-icon name="ticket-outline"></ion-icon>
-          <span class="card__item__porcent">3%</span>
-        </div>
-
-        <div class="cost__card__body">
-          <span class="card__item__value">1000,00</span>
-          <h2 class="card__item__type-title">Eletrônico</h2>
-        </div>
-      </div>
-
-      <div class="cost__card">
-        <div class="cost__card__header">
-          <ion-icon name="ticket-outline"></ion-icon>
-          <span class="card__item__porcent">3%</span>
-        </div>
-
-        <div class="cost__card__body">
-          <span class="card__item__value">1000,00</span>
-          <h2 class="card__item__type-title">Bonus</h2>
+          <span class="card__item__value">R$ {{ estatitisca.valor }}</span>
+          <h2 class="card__item__type-title">{{ estatitisca.nome }}</h2>
         </div>
       </div>
 

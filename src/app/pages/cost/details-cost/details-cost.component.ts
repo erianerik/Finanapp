@@ -44,7 +44,7 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
   }
 
   carregarCusto(idCusto: number) {
-    this._custoService.buscarCustoId(this.idUsuario, idCusto).subscribe(((result:Custo)  => this.custo = result));
+    this._custoService.buscarCustoId(this.idUsuario, idCusto).subscribe(((result: Custo) => this.custo = result));
   }
 
   atualizarCusto(form: any) {
@@ -55,11 +55,7 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
   }
 
   excluirCusto() {
-    this._custoService.deletarCusto(this.idUsuario, this.custo.id).subscribe((result => {
-      console.log(result ? true : false);
-      
-      this.showDetail = result ? !this.showDetail : false; 
-    }))
+    this._custoService.deletarCusto(this.idUsuario, this.custo.id).subscribe((result => this.showDetail = result ? !this.showDetail : false))
   }
 
   showUpdate(isUpdate: boolean) {

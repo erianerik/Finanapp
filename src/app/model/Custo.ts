@@ -11,7 +11,7 @@ export class Custo {
     proximaParcela: string;
     constructor() {
         this.id = null;
-        this.tipo = 'ROUPA';
+        this.tipo = 'LAZER';
         this.descricao = '';
         this.possuiParcela = false;
         this.gasto = true;
