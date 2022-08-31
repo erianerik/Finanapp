@@ -49,8 +49,9 @@
         <input 
           class="input"
           inputmode="numeric" 
-          type="number" 
+          type="text" 
           placeholder="Ex.: 1200.00" 
+          (keyup)="formatarValorMonetario('salario')"
           [ngClass]="{'input-error': cadastroForm.controls.salario.errors && cadastroForm.controls.salario.touched}"
           formControlName="salario">
         <span class="validar-container" *ngIf="cadastroForm.controls.salario.errors && cadastroForm.controls.salario.touched">
@@ -61,8 +62,9 @@
         <input 
           class="input"
           inputmode="numeric" 
-          type="number" 
+          type="text" 
           placeholder="Ex.: 1200.00" 
+          (keyup)="formatarValorMonetario('dinheiroGuardado')"
           [ngClass]="{'input-error': cadastroForm.controls.dinheiroGuardado.errors && cadastroForm.controls.dinheiroGuardado.touched}"
           formControlName="dinheiroGuardado">
         <span class="validar-container" *ngIf="cadastroForm.controls.dinheiroGuardado.errors && cadastroForm.controls.dinheiroGuardado.touched">

@@ -5,7 +5,7 @@ import { UsuarioService } from 'src/app/service/usuario/usuario.service';
 import { Usuario } from 'src/app/model/Usuario';
 import { BroadcastService } from 'src/app/service/broadcast/broadcast.service';
 import { SessionStorageService } from 'src/app/service/session-storage/session-storage.service';
-import * as $ from 'jquery';
+import { FormatadorUtils } from 'src/app/util/formatador-utils';
 
 @Component({
   selector: 'app-register-login',
@@ -62,24 +62,38 @@ export class RegisterLoginPage implements OnInit {
   montarCadastroUsuario(): Usuario {
     let usuario = new Usuario();
     const cadastroForm = this.cadastroForm.controls;
-
     usuario.nome = cadastroForm.usuario.value;
     usuario.cargo = cadastroForm.cargo.value;
-    usuario.salario = cadastroForm.salario.value;
-    usuario.dinheiroGuardado = cadastroForm.dinheiroGuardado.value;
+    usuario.salario = FormatadorUtils.formatarValor(cadastroForm.salario.value);
+    usuario.dinheiroGuardado = FormatadorUtils.formatarValor(cadastroForm.dinheiroGuardado.value);
     usuario.perfil.email = cadastroForm.email.value;
     usuario.perfil.senha = cadastroForm.senha.value;
+
     return usuario;
   }
 
   validarFormulario(): boolean {
     this.cadastroForm.markAllAsTouched();
     this.validarSenha();
-    console.log(this.cadastroForm);
     return this.cadastroForm.valid;
   }
 
-  cadastrarUsuario() {
+  formatarValorMonetario(formControlName: any) {
+    const formControl = this.cadastroForm.get(formControlName);
+    let valorMonetario = formControl.value;
+    valorMonetario = valorMonetario + '';
+    valorMonetario = parseInt(valorMonetario.replace(/[\D]+/g, ''));
+    valorMonetario = valorMonetario + '';
+    valorMonetario = valorMonetario.replace(/([0-9]{2})$/g, ",$1");
+
+    if (valorMonetario.length > 6) {
+      valorMonetario = valorMonetario.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+    }
+
+    formControl.setValue(valorMonetario !== 'NaN' ? 'R$ ' + valorMonetario : '');
+  }
+
+  async cadastrarUsuario() {
     if (!this.validarFormulario()) { return; }
     BroadcastService.toggleLoading();
 
