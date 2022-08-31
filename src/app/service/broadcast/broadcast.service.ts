@@ -6,12 +6,17 @@ import { Subject } from 'rxjs';
 })
 export class BroadcastService {
 
-  public detailSubjetct = new Subject<number>();
+  public static broadcastSubject = new Subject<any>();
+  public detalheSubject = new Subject<number>();
 
   constructor() { }
 
   setDetailSubject(idCusto: number) {
-    this.detailSubjetct.next(idCusto);
+    this.detalheSubject.next(idCusto);
+  }
+
+  static toggleLoading() {
+    this.broadcastSubject.next('toggleLoading');
   }
 
 }

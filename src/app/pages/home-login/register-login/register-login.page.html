@@ -8,29 +8,95 @@
       </header>
 
       <fieldset class="form__content__inputs">
-        <label class="input-label">Usuário</label>
-        <input class="input" placeholder="Ex.: José Agusto" formControlName="usuario">
+        <label class="input-label" >Usuário</label>
+        <input 
+          class="input" 
+          placeholder="Ex.: José Agusto" 
+          [ngClass]="{'input-error': cadastroForm.controls.usuario.errors && cadastroForm.controls.usuario.touched}" 
+          formControlName="usuario">
+        <span class="validar-container" *ngIf="cadastroForm.controls.usuario.errors && cadastroForm.controls.usuario.touched">
+          <ul>
+            <li><ion-icon name="alert-circle-outline"></ion-icon> Usuário inválido</li>
+            <li *ngIf="cadastroForm.controls.usuario.errors.minlength">Usuário deve conter no minímos 3 caracteres</li>
+          </ul>
+        </span>
 
         <label class="input-label">Email</label>
-        <input class="input" inputmode="email" type="email" placeholder="Ex.: joseAugusto@email.com" formControlName="email">
- 
+        <input 
+          class="input"
+          inputmode="email" 
+          type="email" 
+          placeholder="Ex.: joseAugusto@email.com" 
+          [ngClass]="{'input-error': cadastroForm.controls.email.errors && cadastroForm.controls.email.touched}"
+          formControlName="email">
+        <span class="validar-container" *ngIf="cadastroForm.controls.email.errors && cadastroForm.controls.email.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Email inválido
+        </span>
+
         <label class="input-label">Cargo</label>
-        <input class="input" inputmode="text" type="text" placeholder="Ex.: Operador de loja" formControlName="cargo">
+        <input 
+          class="input"
+          inputmode="text" 
+          type="text" 
+          placeholder="Ex.: Operador de loja" 
+          [ngClass]="{'input-error': cadastroForm.controls.cargo.errors && cadastroForm.controls.cargo.touched}"
+          formControlName="cargo">
+        <span class="validar-container" *ngIf="cadastroForm.controls.cargo.errors && cadastroForm.controls.cargo.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Cargo inválido
+        </span>
 
         <label class="input-label">Salário</label>
-        <input class="input" inputmode="numeric" type="number" placeholder="Ex.: 1200.00" formControlName="salario">
+        <input 
+          class="input"
+          inputmode="numeric" 
+          type="number" 
+          placeholder="Ex.: 1200.00" 
+          [ngClass]="{'input-error': cadastroForm.controls.salario.errors && cadastroForm.controls.salario.touched}"
+          formControlName="salario">
+        <span class="validar-container" *ngIf="cadastroForm.controls.salario.errors && cadastroForm.controls.salario.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Salario inválido
+        </span>
 
         <label class="input-label">Total de dinheiro guardado</label>
-        <input class="input" inputmode="numeric" type="number" placeholder="Ex.: 1200.00" formControlName="dinheiroGuardado">
+        <input 
+          class="input"
+          inputmode="numeric" 
+          type="number" 
+          placeholder="Ex.: 1200.00" 
+          [ngClass]="{'input-error': cadastroForm.controls.dinheiroGuardado.errors && cadastroForm.controls.dinheiroGuardado.touched}"
+          formControlName="dinheiroGuardado">
+        <span class="validar-container" *ngIf="cadastroForm.controls.dinheiroGuardado.errors && cadastroForm.controls.dinheiroGuardado.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Valor inválido
+        </span>
 
         <label class="input-label">Senha</label>
-        <input class="input" type="password" placeholder="Ex.: *********" formControlName="confirmarSenha">
+        <input 
+          class="input"
+          type="password" 
+          placeholder="Ex.: *********" 
+          [ngClass]="{'input-error': cadastroForm.controls.senha.errors && cadastroForm.controls.senha.touched}"
+          (change)="validarSenha()"
+          formControlName="senha">
+        <span class="validar-container" *ngIf="cadastroForm.controls.senha.errors && cadastroForm.controls.senha.touched">
+          <ul>
+            <li *ngIf="cadastroForm.controls.senha.errors.required"><ion-icon name="alert-circle-outline"></ion-icon>Senha inválida</li>
+            <li *ngIf="cadastroForm.controls.senha.errors.senhasInvalidas">Senha diferente</li>
+          </ul>
+        </span>
 
         <label class="input-label">Confirmar senha</label>
-        <input class="input" type="password" placeholder="Ex.: *********" formControlName="senha">
+        <input 
+          class="input"
+          type="password" 
+          placeholder="Ex.: *********" 
+          (change)="validarSenha()"
+          [ngClass]="{'input-error': cadastroForm.controls.confirmarSenha.errors && cadastroForm.controls.confirmarSenha.touched}"
+          formControlName="confirmarSenha">
+        <span class="validar-container" *ngIf="cadastroForm.controls.confirmarSenha.errors && cadastroForm.controls.confirmarSenha.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Confirmar senha inválida
+        </span>
 
-        <p class="form-login__term-acess">Você está concordando com o nosso <span class="term-user-link">termo de uso de
-            privacidade</span></p>
+        <p class="form-login__term-acess">Você está concordando com o nosso <span class="term-user-link">termo de uso de privacidade</span></p>
       </fieldset>
     </div>
 

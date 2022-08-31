@@ -255,3 +255,31 @@ ion-slides {
     line-height: 1.3;
     margin-top: 0.5em;
 }
+
+.validar-container {
+    display: block;
+    width: 100%;
+    font-size: 0.85em;
+    margin-top: 0.5em;
+    display: flex;
+    align-items: center;
+    color: var(--red600);
+    ion-icon {
+        min-width: 1em;
+        margin-right: 0.5em;
+    }
+
+    li {
+        &:first-child {
+            margin-left: 0;
+            margin-top: 0em;
+        }
+
+        margin-left: 1.7em;
+        margin-top: 0.5em;
+    }
+}
+
+.input-error {
+    border-bottom: 2px solid var(--red600);
+}

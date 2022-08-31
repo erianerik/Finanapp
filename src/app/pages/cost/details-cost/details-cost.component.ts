@@ -21,7 +21,7 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
     private _sessionStorageService: SessionStorageService,
     private _custoService: CustoService
   ) {
-    this._broadcast.detailSubjetct.subscribe((idCusto: number) => {
+    this._broadcast.detalheSubject.subscribe((idCusto: number) => {
       this.showDetail = true;
       setTimeout(() => this.carregarCusto(idCusto), 550);
     });
