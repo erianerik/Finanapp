@@ -10,18 +10,45 @@
 
         <div class="login__inputs">
           <label class="input-label">Email</label>
-          <input type="email" [(ngModel)]="login.email" name="email" class="input" placeholder="Ex.: jorge.augusto@email.com">
+          <input 
+            type="email" 
+            [(ngModel)]="login.email" 
+            name="email" 
+            class="input" 
+            [ngClass]="{'input-error': formErro.emailPossuiErro}" 
+            placeholder="Ex.: jorge.augusto@email.com">
+          <span class="validar-container" *ngIf="formErro.emailPossuiErro">
+            <ul>
+              <li><ion-icon name="alert-circle-outline"></ion-icon>Email inválido</li>
+            </ul>
+          </span>
 
           <label class="input-label">Senha</label>
-          <input type="password" [(ngModel)]="login.senha" name="senha" class="input" placeholder="Ex.: ********">
+          <input 
+            type="password" 
+            [(ngModel)]="login.senha" 
+            name="senha" 
+            class="input" 
+            [ngClass]="{'input-error': formErro.senhaPossuiErro}" 
+            placeholder="Ex.: ********">
+          <span class="validar-container" *ngIf="formErro.senhaPossuiErro">
+            <ul>
+              <li><ion-icon name="alert-circle-outline"></ion-icon>Senha inválido</li>
+            </ul>
+          </span>
         </div>
-
+        <span class="validar-container" *ngIf="formErro.emailSenhaInvalido">
+          <ul>
+            <li><ion-icon name="alert-circle-outline"></ion-icon>Email ou senha inválidos</li>
+          </ul>
+        </span>
+        
         <a class="login__forget-password">Esqueceu a senha?</a>
       </fieldset>
 
       <fieldset class="login__action">
         <ion-button type="submit" class="button button--blue">Login</ion-button>
-        <p class="form-actions__account">Não possui uma conta? <span class="login-link">Cadastrar-se</span></p>
+        <p class="form-actions__account" (click)="navigateRegister()">Não possui uma conta? <span class="login-link">Cadastrar-se</span></p>
       </fieldset>
     </div>
   </form>
