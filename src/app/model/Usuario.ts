@@ -4,15 +4,15 @@ export class Usuario {
     id: number | null;
     nome: string;
     cargo: string;
-    salario: number;
-    dinheiroGuardado: number;
+    salario: string;
+    dinheiroGuardado: string;
     perfil: Perfil;
     
     constructor() {
         this.nome = '';
         this.cargo = '';
-        this.salario = 0;
-        this.dinheiroGuardado = 0;
+        this.salario = '0';
+        this.dinheiroGuardado = '0';
         this.perfil = new Perfil();
     }
 }

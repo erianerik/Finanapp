@@ -48,6 +48,5 @@ export class HomePage implements OnInit {
       this.estatitisca.map((estatistca) => estatistca.valor += estatistca.nome === custoItem.tipo.toLocaleUpperCase() ? custoItem.valor : 0)
       this.estatitisca.map((estatitisca) => estatitisca.porcetagem = Math.round((estatitisca.valor * 100) / custoTotal));
     });
-    console.log(this.estatitisca);
   }
 }

@@ -1,7 +1,7 @@
 export class FormatadorUtils {
 
-    static formatarValor(valor: String): number {
-        let valorMonetario = valor.replace('R$', '').replace('.', '').replace(',', '');
-        return parseFloat(valorMonetario);
+    static formatarValor(valor: String): string {
+        let valorMonetario = valor.replace('R$', '');
+        return valorMonetario;
     }
 }
