@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionStorageService } from 'src/app/service/session-storage/session-storage.service';
 import { CustoService } from 'src/app/service/custo/custo-service.service';
 import { ItensHome } from 'src/app/model/ItensHome';
+import { FormatadorUtils } from 'src/app/util/formatador-utils';
 
 @Component({
   selector: 'app-my-cost',
@@ -11,8 +12,25 @@ import { ItensHome } from 'src/app/model/ItensHome';
 })
 export class MyCostPage implements OnInit {
 
+  naoPossuiCusto;
   idUsuario: any;
   itensHome = new ItensHome();
+  icone = {
+    'COMIDA': 'pizza-outline',
+    'RESTAURANTE': 'restaurant-outline',
+    'ROUPA': 'shirt-outline',
+    'MERCADO': 'storefront-outline',
+    'LAZER': 'home-outline',
+    'PETS': 'paw-outline',
+    'GASOLINA': 'car-outline',
+    'SERVICOS': 'construct-outline',
+    'TELEFONE': 'phone-portrait-outline',
+    'VIAGEM': 'airplane-outline',
+    'INTERNET': 'wifi-outline',
+    'PRESENTE': 'gift-outline',
+    'OUTROS': 'sync-outline',
+    'COMPRAS': 'bag-handle-outline'
+  }
 
   constructor(
     private _broadcast: BroadcastService,
@@ -21,6 +39,7 @@ export class MyCostPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    BroadcastService.toggleLoading();
     this.carregarIdUsuario();
     setTimeout(() => this.carregarCustos(this.idUsuario), 500);
   }
@@ -34,8 +53,11 @@ export class MyCostPage implements OnInit {
   }
 
   carregarCustos(idUsuario: any) {
-    this._custoService.buscarCustos(idUsuario).subscribe((result) => this.itensHome = result);
-
-
+    this._custoService.buscarCustos(idUsuario).subscribe((result) => {
+      this.itensHome = result as ItensHome;
+      this.itensHome.custos.forEach((custo => custo.icone = FormatadorUtils.icones[custo.tipo.toLocaleUpperCase()]));
+      this.naoPossuiCusto = this.itensHome.custos.length === 0;
+    });
+    BroadcastService.toggleLoading();
   }
 }

@@ -60,6 +60,15 @@ ion-slides {
     border-radius: 10px 10px 0px 0px;
 }
 
+.custo-nao-cadastrado {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .cost__title {
     font-size: 1em;
     font-weight: bold;
@@ -82,7 +91,7 @@ ion-slides {
 }
 
 .cost-card__content {
-    width: 100%;
+    width: auto;
     height: 100%;
     display: flex;
     align-items: center;
@@ -101,7 +110,7 @@ ion-slides {
 }
 .cost-card__title {
     margin-top: 0;
-    font-size: .9em;
+    font-size: 0.9em;
     font-weight: 600;
 }
 

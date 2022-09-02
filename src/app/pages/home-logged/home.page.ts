@@ -4,6 +4,7 @@ import { ItensHome } from 'src/app/model/ItensHome';
 import { BroadcastService } from 'src/app/service/broadcast/broadcast.service';
 import { CustoService } from 'src/app/service/custo/custo-service.service';
 import { SessionStorageService } from 'src/app/service/session-storage/session-storage.service';
+import { FormatadorUtils } from 'src/app/util/formatador-utils';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ import { SessionStorageService } from 'src/app/service/session-storage/session-s
 export class HomePage implements OnInit {
   idUsuario: any;
   itensHome = new ItensHome();
-  estatitisca: Estatistica[] = [];
+  estatistica: Estatistica[] = [];
 
   constructor(
     private _sessionStorageService: SessionStorageService,
@@ -21,6 +22,7 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    BroadcastService.toggleLoading();
     this.carregarIdUsuario();
     setTimeout(() => this.carregarCustos(this.idUsuario), 500);
   }
@@ -33,20 +35,30 @@ export class HomePage implements OnInit {
     this._custoService.buscarCustos(idUsuario).subscribe((result) => {
       this.itensHome = result;
       this.calcularEstatistica();
+      BroadcastService.toggleLoading();
     });
   }
 
   calcularEstatistica() {
     const custos = this.itensHome.custos;
-    const custoTotal = this.itensHome.totalGasto;
-    custos.forEach(custoItem => this.estatitisca.push(new Estatistica(custoItem.tipo)));
-    this.estatitisca = this.estatitisca.filter(function (a) {
+    const custoTotal = parseFloat(this.itensHome.totalGasto.toString().replace(',', '.'));
+    custos.forEach(custoItem => this.estatistica.push(new Estatistica(custoItem.tipo)));
+    this.estatistica = this.estatistica.filter(function (a) {
       return !this[JSON.stringify(a)] && (this[JSON.stringify(a)] = true);
     }, Object.create(null));
 
     custos.forEach((custoItem) => {
-      this.estatitisca.map((estatistca) => estatistca.valor += estatistca.nome === custoItem.tipo.toLocaleUpperCase() ? custoItem.valor : 0)
-      this.estatitisca.map((estatitisca) => estatitisca.porcetagem = Math.round((estatitisca.valor * 100) / custoTotal));
+      this.estatistica.map((estatistica) => {
+        let valorItem = parseFloat(custoItem.valor.toString().replace(',', '.'));
+        estatistica.valor += estatistica.nome === custoItem.tipo.toLocaleUpperCase() ? valorItem : 0
+      });
+
+      this.estatistica.map((estatistica) => {
+        console.log(estatistica);
+        
+        estatistica.porcetagem = Math.round((estatistica.valor * 100) / custoTotal)
+      });
+      this.estatistica.forEach((estatistica => estatistica.icone = FormatadorUtils.icones[estatistica.nome]));
     });
   }
 }

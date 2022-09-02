@@ -24,12 +24,14 @@
 
     <div class="cost-container">
       <h2 class="cost__title">Custos</h2>
-
+      <div class="custo-nao-cadastrado" *ngIf="naoPossuiCusto">
+        <p>Nenhum custo cadastrado neste mês</p>
+      </div>
       <div class="cost-card__container">
         <div class="cost-card" *ngFor="let custo of itensHome.custos">
           <div class="cost-card__content">
             <div class="cost-card__icon">
-              <ion-icon name="attach-outline"></ion-icon>
+              <ion-icon [name]="custo.icone"></ion-icon>
             </div>
 
             <div class="txt-align-left" (click)="irDetalheCusto(custo.id)">
@@ -39,7 +41,7 @@
           </div>
 
           <div class="txt-align-right">
-            <h3 class="cost-card__title">{{ custo.valor }}</h3>
+            <h3 class="cost-card__title">R${{ custo.valor }}</h3>
             <p class="cost-card__description">{{ custo.data }}</p>
           </div>
         </div>

@@ -24,20 +24,20 @@
           </div>
         </div>
 
-        <button class="statistisc-button" *ngIf="estatitisca.length !== 0">Olhar estatística desse périodo</button>
+        <button class="statistisc-button" *ngIf="estatistica.length !== 0">Olhar estatística desse périodo</button>
       </div>
     </div>
 
-    <div class="cost-container" *ngIf="estatitisca">
-      <div class="cost__card" *ngFor="let estatitisca of estatitisca">
+    <div class="cost-container" *ngIf="estatistica">
+      <div class="cost__card" *ngFor="let estatistica of estatistica">
         <div class="cost__card__header">
-          <ion-icon name="ticket-outline"></ion-icon>
-          <span class="card__item__porcent">{{ estatitisca.porcetagem }}%</span>
+          <ion-icon [name]="estatistica.icone"></ion-icon>
+          <span class="card__item__porcent">{{ estatistica.porcetagem }}%</span>
         </div>
 
         <div class="cost__card__body">
-          <span class="card__item__value">R$ {{ estatitisca.valor }}</span>
-          <h2 class="card__item__type-title">{{ estatitisca.nome }}</h2>
+          <span class="card__item__value">R$ {{ estatistica.valor }}</span>
+          <h2 class="card__item__type-title">{{ estatistica.nome }}</h2>
         </div>
       </div>
 

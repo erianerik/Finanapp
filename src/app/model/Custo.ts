@@ -9,6 +9,8 @@ export class Custo {
     gasto: boolean;
     quantidadeParcela: number;
     proximaParcela: string;
+    icone: string;
+
     constructor() {
         this.id = null;
         this.tipo = 'LAZER';
