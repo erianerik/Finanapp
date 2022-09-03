@@ -4,12 +4,15 @@
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
 @import "~@ionic/angular/css/display.css";
-
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+// Swiper
+@import "~swiper/scss";
+@import "~swiper/scss/pagination";
 
 // Montserrat
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap");
@@ -29,6 +32,13 @@ h3 {
     padding: 0;
 }
 
+.swiper-pagination-bullet-active {
+    background: var(--white100) !important;
+}
+.swiper-slide {
+    position: relative !important;
+    z-index: -1 !important;
+}
 ion-button,
 .button {
     --border-color: none;
@@ -150,6 +160,12 @@ ion-slides {
     ::placeholder {
         color: var(--grey300);
     }
+}
+
+.select {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--blue700);
 }
 
 .input-textarea {

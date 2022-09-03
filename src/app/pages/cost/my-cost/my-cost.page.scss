@@ -29,7 +29,7 @@
     }
 
     .slide__label {
-        font-size: 0.65em;
+        font-size: 0.75em;
         color: rgba($color: #ffffff, $alpha: 0.7);
     }
 
@@ -39,15 +39,11 @@
     }
 
     .slide__value__corrency {
-        font-size: 0.5em;
+        font-size: 0.7em;
         color: rgba($color: #ffffff, $alpha: 0.8);
     }
 }
 
-ion-slides {
-    --bullet-background-active: var(--white100);
-    z-index: 0;
-}
 
 .cost-container {
     width: 100%;

@@ -4,23 +4,28 @@
       <h2 class="header__title">{{ itensHome.mesCusto }}</h2>
     </header>
 
+    <swiper class="slide" [config]="configuracaoSlide" [pagination]="true" *ngIf="exibirSlide">
+      <ng-template swiperSlide>
+        <div class="slide-item">
+          <h2 class="slide__label">Custos</h2>
+          <span class="slide__value"><span class="slide__value__corrency">R$</span> {{ itensHome.totalGasto }}</span>
+        </div>
+      </ng-template>
 
-    <ion-slides class="slide" pager="true">
-      <ion-slide class="slide-item">
-        <h2 class="slide__label">Custos</h2>
-        <span class="slide__value"><span class="slide__value__corrency">R$</span> {{ itensHome.totalGasto }}</span>
-      </ion-slide>
+      <ng-template swiperSlide>
+        <div class="slide-item">
+          <h2 class="slide__label">Saldo disponível</h2>
+          <span class="slide__value"><span class="slide__value__corrency">R$</span> {{ itensHome.saldoDisponivel }}</span>
+        </div>
+      </ng-template>
 
-      <ion-slide class="slide-item">
-        <h2 class="slide__label">Saldo disponível</h2>
-        <span class="slide__value"><span class="slide__value__corrency">R$</span> {{ itensHome.saldoDisponivel }}</span>
-      </ion-slide>
-
-      <ion-slide class="slide-item">
-        <h2 class="slide__label">Total a guardar</h2>
-        <span class="slide__value"><span class="slide__value__corrency">R$</span> {{ itensHome.totalGuardar }}</span>
-      </ion-slide>
-    </ion-slides>
+      <ng-template swiperSlide>
+        <div class="slide-item">
+          <h2 class="slide__label">Total a guardar</h2>
+          <span class="slide__value"><span class="slide__value__corrency">R$</span> {{ itensHome.totalGuardar }}</span>
+        </div>
+      </ng-template>
+    </swiper>
 
     <div class="cost-container">
       <h2 class="cost__title">Custos</h2>
@@ -48,7 +53,7 @@
       </div>
     </div>
   </div>
-  <details-cost></details-cost>
+  <details-cost (exibirSlide)="closeDetail($event)"></details-cost>
 
   <app-navigation></app-navigation>
 </ion-content>

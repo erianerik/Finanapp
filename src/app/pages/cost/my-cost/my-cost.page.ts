@@ -4,6 +4,7 @@ import { SessionStorageService } from 'src/app/service/session-storage/session-s
 import { CustoService } from 'src/app/service/custo/custo-service.service';
 import { ItensHome } from 'src/app/model/ItensHome';
 import { FormatadorUtils } from 'src/app/util/formatador-utils';
+import Swiper, { SwiperOptions, Pagination } from 'swiper';
 
 @Component({
   selector: 'app-my-cost',
@@ -12,6 +13,7 @@ import { FormatadorUtils } from 'src/app/util/formatador-utils';
 })
 export class MyCostPage implements OnInit {
 
+  exibirSlide: boolean = true;
   naoPossuiCusto;
   idUsuario: any;
   itensHome = new ItensHome();
@@ -32,6 +34,10 @@ export class MyCostPage implements OnInit {
     'COMPRAS': 'bag-handle-outline'
   }
 
+  public configuracaoSlide: SwiperOptions = {
+    pagination: true
+  }
+
   constructor(
     private _broadcast: BroadcastService,
     private _sessionStorageService: SessionStorageService,
@@ -40,16 +46,22 @@ export class MyCostPage implements OnInit {
 
   ngOnInit() {
     BroadcastService.toggleLoading();
+    Swiper.use([Pagination]);
     this.carregarIdUsuario();
     setTimeout(() => this.carregarCustos(this.idUsuario), 500);
   }
 
   irDetalheCusto(idCusto: number) {
+    this.exibirSlide = false;
     this._broadcast.setDetailSubject(idCusto);
   }
 
   async carregarIdUsuario() {
     this.idUsuario = await this._sessionStorageService.getSession();
+  }
+
+  closeDetail(event: boolean) {
+    this.exibirSlide = event;
   }
 
   carregarCustos(idUsuario: any) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Custo } from 'src/app/model/Custo';
 import { CustoService } from 'src/app/service/custo/custo-service.service';
 import { SessionStorageService } from 'src/app/service/session-storage/session-storage.service';
@@ -10,6 +11,7 @@ import { SessionStorageService } from 'src/app/service/session-storage/session-s
 })
 export class AddCostPage implements OnInit {
 
+  custoForm: FormGroup;
   custo = new Custo();
   idUsuario: any;
   possuiParcela = false;
@@ -20,10 +22,22 @@ export class AddCostPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.criarCustorFormBuilder();
     this.carregarSessionStorage();
   }
   async carregarSessionStorage() {
     this.idUsuario = await this._sessionStorage.getSession();
+  }
+
+  criarCustorFormBuilder() {
+    this.custoForm = new FormGroup({
+      valor: new FormControl('', Validators.required),
+      data: new FormControl('', Validators.required),
+      tipo: new FormControl('', Validators.required),
+      descricao: new FormControl(''),
+      custo: new FormControl(true),
+      quantidade: new FormControl(''),
+    });
   }
 
   exibirParcela() {
@@ -31,8 +45,31 @@ export class AddCostPage implements OnInit {
   }
 
   adicionarCusto(custoForm: any) {
+    if (!this.validarFormulario()) { return; }
+    this.custo = this.custoForm.value as Custo;
     this.custo.idUsuario = this.idUsuario;
     this._custoService.cadastrarCusto(this.custo).subscribe((result) => console.log(result));
   }
 
+  formatarValorMonetario(formControlName: any) {
+    const formControl = this.custoForm.get(formControlName);
+    let valorMonetario = formControl.value;
+    valorMonetario = valorMonetario + '';
+    valorMonetario = parseInt(valorMonetario.replace(/[\D]+/g, ''));
+    valorMonetario = valorMonetario + '';
+    valorMonetario = valorMonetario.replace(/([0-9]{2})$/g, ",$1");
+
+    if (valorMonetario.length > 6) {
+      valorMonetario = valorMonetario.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+    }
+
+    formControl.setValue(valorMonetario !== 'NaN' ? 'R$ ' + valorMonetario : '');
+  }
+
+  validarFormulario(): boolean {
+    this.custoForm.markAllAsTouched();
+    console.log(this.custoForm.controls);
+    
+    return this.custoForm.valid;
+  }
 }

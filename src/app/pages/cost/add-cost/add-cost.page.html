@@ -1,5 +1,5 @@
 <ion-content>
-  <form class="form-add-cost container" #custoForm="ngForm" (ngSubmit)="adicionarCusto(custoForm)">
+  <form class="form-add-cost container" [formGroup]="custoForm" (ngSubmit)="adicionarCusto(custoForm)">
     <div class="form-add-cost__content">
       <header class="login-register__header form-header">
         <h1 class="form-title add-cost__title">Cadastrar Custo</h1>
@@ -8,17 +8,59 @@
 
       <fieldset class="form__content__inputs">
         <label class="input-label">Valor</label>
-        <input class="input" type="number" name="valor" inputmode="numeric" placeholder="Ex.: 12.30" [(ngModel)]="custo.valor">
+        <input class="input" 
+          type="text" 
+          name="valor" 
+          (keyup)="formatarValorMonetario('valor')" 
+          [ngClass]="{'input-error': custoForm.controls.valor.errors && custoForm.controls.valor.touched}"
+          inputmode="numeric" 
+          placeholder="Ex.: 12.30" 
+          formControlName="valor">
+        <span class="validar-container" *ngIf="custoForm.controls.valor.errors && custoForm.controls.valor.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Valor inválido
+        </span>
 
         <label class="input-label">Data</label>
-        <input class="input" type="date" name="data"  min="2022-01-01" inputmode="date" placeholder="05/08/2022" [(ngModel)]="custo.data">
+        <input 
+          class="input" 
+          type="date" 
+          name="data"  
+          [ngClass]="{'input-error': custoForm.controls.data.errors && custoForm.controls.data.touched}"
+          min="2022-01-01" 
+          inputmode="date" 
+          formControlName="data">
+        <span class="validar-container" *ngIf="custoForm.controls.data.errors && custoForm.controls.data.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Data inválida
+        </span>
+
+        <label class="input-label">Tipo</label>
+        <select name="tipo" id="tipo" class="input select" [ngClass]="{'input-error': custoForm.controls.tipo.errors && custoForm.controls.tipo.touched}"  formControlName="tipo">
+          <option disabled [selected]="true">Selecione...</option>
+          <option value="COMIDA">Comida</option>
+          <option value="RESTAURANTE">Restaurante</option>
+          <option value="ROUPA">Roupa</option>
+          <option value="MERCADO">Mercado</option>
+          <option value="LAZER">Lazer</option>
+          <option value="PETS">Pets</option>
+          <option value="GASOLINA">Gasolina</option>
+          <option value="SERVICOS">Serviços</option>
+          <option value="TELEFONE">Telefone</option>
+          <option value="VIAGEM">Viagem</option>
+          <option value="INTERNET">Internet</option>
+          <option value="PRESENTE">Presente</option>
+          <option value="COMPRA">Compra</option>
+          <option value="OUTROS">Outros</option>
+        </select>
+        <span class="validar-container" *ngIf="custoForm.controls.tipo.errors && custoForm.controls.tipo.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Tipo inválido
+        </span>
 
         <label class="input-label">Descrição</label>
-        <ion-textarea class="input input-textarea" name="descricao" placeholder="Ex.: Presente para meu amigo José Augusto" [(ngModel)]="custo.descricao"></ion-textarea>
+        <ion-textarea class="input input-textarea" name="descricao" placeholder="Ex.: Presente para meu amigo José Augusto" formControlName="descricao"></ion-textarea>
 
         <div class="toggle-container">
           <label class="input-label">Custo</label>
-          <ion-toggle class="input-toggle" name="custo" checked [value]="custo.gasto" [(ngModel)]="custo.gasto"></ion-toggle>
+          <ion-toggle class="input-toggle" name="custo" checked formControlName="custo"></ion-toggle>
         </div>
 
         <div class="toggle-container">
@@ -28,7 +70,7 @@
 
         <div class="margin-top05" *ngIf="possuiParcela">
           <label class="input-label">Quantidade</label>
-          <input class="input" type="number" inputmode="numeric"  name="quantidadParcela" minLength="1" maxlength="12" placeholder="Ex.: 8" [(ngModel)]="custo.quantidadeParcela">
+          <input class="input" type="number" inputmode="numeric"  name="quantidadParcela" minLength="1" maxlength="12" placeholder="Ex.: 8" formControlName="quantidade">
         </div>
       </fieldset>
     </div>

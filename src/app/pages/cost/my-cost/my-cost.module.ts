@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
+import { SwiperModule } from 'swiper/angular';
 
 import { MyCostPageRoutingModule } from './my-cost-routing.module';
 
@@ -15,6 +16,7 @@ import { MyCostPage } from './my-cost.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    SwiperModule,
     MyCostPageRoutingModule
   ],
   declarations: [MyCostPage, NavigationPage, DetailsCostComponent]

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Custo } from 'src/app/model/Custo';
 import { BroadcastService } from 'src/app/service/broadcast/broadcast.service';
 import { CustoService } from 'src/app/service/custo/custo-service.service';
@@ -15,6 +15,8 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
   showDetail = false;
   isUpdate = false;
   idUsuario;
+  
+  @Output() exibirSlide = new EventEmitter<boolean>();
 
   constructor(
     private _broadcast: BroadcastService,
@@ -36,6 +38,7 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
   }
 
   closeDetail(): void {
+    this.exibirSlide.emit(true);
     this.showDetail = false;
   }
 
