@@ -87,7 +87,7 @@ export class CostChartPage implements OnInit {
     }, Object.create(null));
 
     custos.forEach((custoItem) => {
-      this.estatitisca.map((estatistca) => estatistca.valor += estatistca.nome === custoItem.tipo.toLocaleUpperCase() ? custoItem.valor : 0)
+      // this.estatitisca.map((estatistca) => estatistca.valor += estatistca.nome === custoItem.tipo.toLocaleUpperCase() ? custoItem.valor : 0)
       this.estatitisca.map((estatitisca) => estatitisca.porcetagem = Math.round((estatitisca.valor * 100) / custoTotal));
     });
 

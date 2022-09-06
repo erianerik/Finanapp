@@ -3,6 +3,7 @@ import { Custo } from 'src/app/model/Custo';
 import { BroadcastService } from 'src/app/service/broadcast/broadcast.service';
 import { CustoService } from 'src/app/service/custo/custo-service.service';
 import { SessionStorageService } from 'src/app/service/session-storage/session-storage.service';
+import { FormatadorUtils } from 'src/app/util/formatador-utils';
 
 @Component({
   selector: 'details-cost',
@@ -47,7 +48,12 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
   }
 
   carregarCusto(idCusto: number) {
-    this._custoService.buscarCustoId(this.idUsuario, idCusto).subscribe(((result: Custo) => this.custo = result));
+    this._custoService.buscarCustoId(this.idUsuario, idCusto).subscribe(((result: any) => {
+      this.custo = result.data as Custo;
+      console.log(this.custo);
+      
+      // this.custo.valor = FormatadorUtils.formatarValorMonetario(this.custo.valor);
+    }));
   }
 
   atualizarCusto(form: any) {

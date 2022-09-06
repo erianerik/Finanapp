@@ -1,7 +1,7 @@
 export class Custo {
     id: number | null;
     idUsuario: number;
-    valor: number;
+    valor: string;
     tipo: string;
     descricao: string;
     data: string;

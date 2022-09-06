@@ -1,24 +1,28 @@
 export class FormatadorUtils {
 
     public static icones = {
-        'COMIDA': 'pizza-outline',
-        'RESTAURANTE': 'restaurant-outline',
-        'ROUPA': 'shirt-outline',
-        'MERCADO': 'storefront-outline',
-        'LAZER': 'home-outline',
-        'PETS': 'paw-outline',
-        'GASOLINA': 'car-outline',
-        'SERVICOS': 'construct-outline',
-        'TELEFONE': 'phone-portrait-outline',
-        'VIAGEM': 'airplane-outline',
-        'INTERNET': 'wifi-outline',
-        'PRESENTE': 'gift-outline',
-        'OUTROS': 'sync-outline',
-        'COMPRAS': 'bag-handle-outline'
+        'COMIDA': 'pizza',
+        'RESTAURANTE': 'restaurant',
+        'ROUPA': 'shirt',
+        'MERCADO': 'storefront',
+        'LAZER': 'home',
+        'PETS': 'paw',
+        'GASOLINA': 'car',
+        'SERVICOS': 'construct',
+        'TELEFONE': 'phone-portrait',
+        'VIAGEM': 'airplane',
+        'INTERNET': 'wifi',
+        'PRESENTE': 'gift',
+        'OUTROS': 'sync',
+        'COMPRAS': 'bag-handle'
     }
 
-    static formatarValor(valor: String): string {
+    static formatarValor(valor: string): string {
         let valorMonetario = valor.replace('R$', '');
         return valorMonetario;
+    }
+
+    static formatarValorMonetario(valor: string): string {
+        return valor.length > 6 ? valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2") : valor.replace(/([0-9]{2})$/g, ",$1");
     }
 }
