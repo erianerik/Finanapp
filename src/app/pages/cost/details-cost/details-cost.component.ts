@@ -13,6 +13,7 @@ import { FormatadorUtils } from 'src/app/util/formatador-utils';
 export class DetailsCostComponent implements OnInit, OnDestroy {
 
   custo = new Custo();
+  exibirLoading = false;
   showDetail = false;
   isUpdate = false;
   idUsuario;
@@ -25,6 +26,7 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
     private _custoService: CustoService
   ) {
     this._broadcast.detalheSubject.subscribe((idCusto: number) => {
+      this.exibirLoading = true;
       this.showDetail = true;
       setTimeout(() => this.carregarCusto(idCusto), 550);
     });
@@ -48,12 +50,7 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
   }
 
   carregarCusto(idCusto: number) {
-    this._custoService.buscarCustoId(this.idUsuario, idCusto).subscribe(((result: any) => {
-      this.custo = result.data as Custo;
-      console.log(this.custo);
-      
-      // this.custo.valor = FormatadorUtils.formatarValorMonetario(this.custo.valor);
-    }));
+    this._custoService.buscarCustoId(this.idUsuario, idCusto).subscribe(((result: any) => { this.custo = result.data as Custo; this.exibirLoading = false; }));
   }
 
   atualizarCusto(form: any) {

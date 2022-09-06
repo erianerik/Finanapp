@@ -1,7 +1,7 @@
 <ion-content *ngIf="showDetail">
   <form #form="ngForm" (ngSubmit)="atualizarCusto(form)" class="detail-container">
     <div class="detail-container__box ds-flex-center">
-      <div class="detail-content">
+      <div class="detail-content" *ngIf="!exibirLoading">
         <span class="close-datail">
           <ion-icon name="close" (click)="closeDetail()"></ion-icon>
         </span>
@@ -24,7 +24,7 @@
         <div class="detail-description">
           <label class="detail-description__title">Valor: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">R$ {{ custo.valor }}</p>
-          <input type="number" name="valor" class="input" [(ngModel)]="custo.valor" *ngIf="isUpdate">
+          <input type="text" name="valor" class="input" [(ngModel)]="custo.valor" *ngIf="isUpdate">
 
           <label class="detail-description__title">Data: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.data }}</p>
@@ -42,11 +42,19 @@
 
           <label class="detail-description__title">Descrição: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.descricao }}</p>
-          <ion-textarea class="input input-textarea" name="descricao" [(ngModel)]="custo.descricao" *ngIf="isUpdate"></ion-textarea>
+          <ion-textarea class="input input-textarea" placeholder="Ex.: Presente para minha mãe" name="descricao"
+            [(ngModel)]="custo.descricao" *ngIf="isUpdate">
+          </ion-textarea>
 
         </div>
         <ion-button type="submit" class="update-button" *ngIf="isUpdate">Atualizar</ion-button>
       </div>
+
+      <div class="detalhe-loading" *ngIf="exibirLoading">
+        <span class="detalhe-loading-item"></span>
+      </div>
     </div>
   </form>
+
+
 </ion-content>
