@@ -15,7 +15,7 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
   showDetail = false;
   isUpdate = false;
   idUsuario;
-  
+
   @Output() exibirSlide = new EventEmitter<boolean>();
 
   constructor(
@@ -52,13 +52,17 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
 
   atualizarCusto(form: any) {
     this.custo.idUsuario = this.idUsuario;
-    this._custoService.atualizarCusto(this.custo).subscribe((result => {
-      console.log(result);
-    }))
+    this._custoService.atualizarCusto(this.custo).subscribe((() => {
+      this._custoService.atualizarDadosCusto();
+    }));
   }
 
   excluirCusto() {
-    this._custoService.deletarCusto(this.idUsuario, this.custo.id).subscribe((result => this.showDetail = result ? !this.showDetail : false))
+    this._custoService.deletarCusto(this.idUsuario, this.custo.id).subscribe((result => {
+      this.showDetail = result ? !this.showDetail : false;
+      this.exibirSlide.emit(true);
+      this._custoService.atualizarDadosCusto();
+    }));
   }
 
   showUpdate(isUpdate: boolean) {

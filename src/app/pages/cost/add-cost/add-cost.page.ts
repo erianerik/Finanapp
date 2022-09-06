@@ -50,7 +50,7 @@ export class AddCostPage implements OnInit {
     BroadcastService.toggleLoading();
     this.custo = this.custoForm.value as Custo;
     this.custo.idUsuario = this.idUsuario;
-    this._custoService.cadastrarCusto(this.custo).subscribe(() => this._custoService.atualizarDadosCusto());
+    this._custoService.cadastrarCusto(this.custo).subscribe(() => { this._custoService.atualizarDadosCusto(); this.custoForm.reset(); });
     BroadcastService.toggleLoading();
   }
 
@@ -71,8 +71,6 @@ export class AddCostPage implements OnInit {
 
   validarFormulario(): boolean {
     this.custoForm.markAllAsTouched();
-    console.log(this.custoForm.controls);
-
     return this.custoForm.valid;
   }
 }

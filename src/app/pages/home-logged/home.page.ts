@@ -19,7 +19,12 @@ export class HomePage implements OnInit {
   constructor(
     private _sessionStorageService: SessionStorageService,
     private _custoService: CustoService
-  ) { }
+  ) {
+    this._custoService.custoSubject.subscribe(() => {
+      this.carregarCustos(this.idUsuario);
+      BroadcastService.toggleLoading();
+    });
+  }
 
   ngOnInit() {
     BroadcastService.toggleLoading();
@@ -33,13 +38,14 @@ export class HomePage implements OnInit {
 
   carregarCustos(idUsuario: any) {
     this._custoService.buscarCustos(idUsuario).subscribe((result) => {
-      this.itensHome = result;
-      this.calcularEstatistica();
+      this.itensHome = result as ItensHome;
       BroadcastService.toggleLoading();
+      this.calcularEstatistica();
     });
   }
 
   calcularEstatistica() {
+    this.estatistica = [];
     const custos = this.itensHome.custos;
     const custoTotal = parseFloat(this.itensHome.totalGasto.toString().replace(',', '.'));
     custos.forEach(custoItem => this.estatistica.push(new Estatistica(custoItem.tipo)));

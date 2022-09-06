@@ -34,13 +34,13 @@
         <p>Nenhum custo cadastrado neste mês</p>
       </div>
       <div class="cost-card__container">
-        <div class="cost-card" *ngFor="let custo of itensHome.custos">
+        <div class="cost-card" *ngFor="let custo of itensHome.custos" (click)="irDetalheCusto(custo.id)">
           <div class="cost-card__content">
             <div class="cost-card__icon">
               <ion-icon [name]="custo.icone"></ion-icon>
             </div>
 
-            <div class="txt-align-left" (click)="irDetalheCusto(custo.id)">
+            <div class="txt-align-left">
               <h3 class="cost-card__title">{{ custo.tipo }}</h3>
               <p class="cost-card__description">{{ custo.descricao}}</p>
             </div>
