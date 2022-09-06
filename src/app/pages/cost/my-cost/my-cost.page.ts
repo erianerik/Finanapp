@@ -42,7 +42,12 @@ export class MyCostPage implements OnInit {
     private _broadcast: BroadcastService,
     private _sessionStorageService: SessionStorageService,
     private _custoService: CustoService
-  ) { }
+  ) {
+    this._custoService.custoSubject.subscribe((() => {
+      this.carregarCustos(this.idUsuario);
+      BroadcastService.toggleLoading();
+    }));
+  }
 
   ngOnInit() {
     BroadcastService.toggleLoading();
@@ -52,7 +57,7 @@ export class MyCostPage implements OnInit {
   }
 
   irDetalheCusto(idCusto: number) {
-    this.exibirSlide = false;
+    setTimeout(() => this.exibirSlide = false);
     this._broadcast.setDetailSubject(idCusto);
   }
 

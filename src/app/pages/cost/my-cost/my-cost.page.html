@@ -15,7 +15,8 @@
       <ng-template swiperSlide>
         <div class="slide-item">
           <h2 class="slide__label">Saldo disponível</h2>
-          <span class="slide__value"><span class="slide__value__corrency">R$</span> {{ itensHome.saldoDisponivel }}</span>
+          <span class="slide__value"><span class="slide__value__corrency">R$</span> {{ itensHome.saldoDisponivel
+            }}</span>
         </div>
       </ng-template>
 
@@ -27,7 +28,7 @@
       </ng-template>
     </swiper>
 
-    <div class="cost-container">
+    <div class="cost-container" [ngClass]="{'altura-sem-custo': itensHome?.custos.length < 4}">
       <h2 class="cost__title">Custos</h2>
       <div class="custo-nao-cadastrado" *ngIf="naoPossuiCusto">
         <p>Nenhum custo cadastrado neste mês</p>

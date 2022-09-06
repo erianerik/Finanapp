@@ -44,10 +44,9 @@
     }
 }
 
-
 .cost-container {
     width: 100%;
-    height: 100%;
+    height: auto;
     margin-top: 2em;
     padding: 1em;
     padding-bottom: 5em;
@@ -113,4 +112,8 @@
 .cost-card__description {
     font-size: 0.7em;
     color: rgba($color: #000000, $alpha: 0.7);
+}
+
+.altura-sem-custo {
+    min-height: 67vh;
 }

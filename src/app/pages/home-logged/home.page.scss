@@ -1,12 +1,15 @@
 .home {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    padding: 1em;
+    min-height: 100vh;
 }
 
 .home__month {
     text-align: center;
     font-weight: 600;
+    margin: 2em auto;
 }
 
 .header__container {
@@ -76,6 +79,7 @@
 
 .cost-container {
     width: 100%;
+    margin-top: 2em;
     display: flex;
     flex-wrap: wrap;
     gap: 1.5em 2em;

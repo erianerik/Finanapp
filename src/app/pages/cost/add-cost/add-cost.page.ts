@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Custo } from 'src/app/model/Custo';
+import { BroadcastService } from 'src/app/service/broadcast/broadcast.service';
 import { CustoService } from 'src/app/service/custo/custo-service.service';
 import { SessionStorageService } from 'src/app/service/session-storage/session-storage.service';
 
@@ -46,9 +47,11 @@ export class AddCostPage implements OnInit {
 
   adicionarCusto(custoForm: any) {
     if (!this.validarFormulario()) { return; }
+    BroadcastService.toggleLoading();
     this.custo = this.custoForm.value as Custo;
     this.custo.idUsuario = this.idUsuario;
-    this._custoService.cadastrarCusto(this.custo).subscribe((result) => console.log(result));
+    this._custoService.cadastrarCusto(this.custo).subscribe(() => this._custoService.atualizarDadosCusto());
+    BroadcastService.toggleLoading();
   }
 
   formatarValorMonetario(formControlName: any) {
@@ -69,7 +72,7 @@ export class AddCostPage implements OnInit {
   validarFormulario(): boolean {
     this.custoForm.markAllAsTouched();
     console.log(this.custoForm.controls);
-    
+
     return this.custoForm.valid;
   }
 }

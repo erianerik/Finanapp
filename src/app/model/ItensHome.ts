@@ -20,5 +20,6 @@ export class ItensHome {
         this.totalGuardar = 0;
         this.totalGasto = 0;
         this.saldoDisponivel = 0;
+        this.custos = [];
     }
 }

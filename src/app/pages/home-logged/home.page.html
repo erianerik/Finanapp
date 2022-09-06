@@ -1,5 +1,5 @@
 <ion-content>
-  <div class="container home">
+  <div class="home" [ngClass]="{'padding-bottom-5': estatistica.length > 4}">
     <h2 class="home__month">{{ itensHome.mesCusto }}</h2>
     <div class="header__container">
       <div class="header__cost__container">
