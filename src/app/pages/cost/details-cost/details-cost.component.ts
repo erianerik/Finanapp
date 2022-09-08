@@ -43,6 +43,7 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
   closeDetail(): void {
     this.exibirSlide.emit(true);
     this.showDetail = false;
+    this.isUpdate = false;
   }
 
   async carregarIdUsuario() {
@@ -50,13 +51,21 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
   }
 
   carregarCusto(idCusto: number) {
-    this._custoService.buscarCustoId(this.idUsuario, idCusto).subscribe(((result: any) => { this.custo = result.data as Custo; this.exibirLoading = false; }));
+    this._custoService.buscarCustoId(this.idUsuario, idCusto).subscribe(((result: any) => {
+      this.custo = result.data as Custo;
+      this.custo.icone = FormatadorUtils.icones[this.custo.tipo];
+      this.custo.valor = this.custo.valor.substring(0, 0) + "R$" + this.custo.valor;
+      this.exibirLoading = false;
+    }));
   }
 
   atualizarCusto(form: any) {
-    this.custo.idUsuario = this.idUsuario;
-    this._custoService.atualizarCusto(this.custo).subscribe((() => {
+    let custoRequest = this.custo;
+    custoRequest.idUsuario = this.idUsuario;
+    custoRequest.valor = custoRequest.valor.replace('R$', '').trim();
+    this._custoService.atualizarCusto(custoRequest).subscribe((() => {
       this._custoService.atualizarDadosCusto();
+      this.custo.icone = FormatadorUtils.icones[this.custo.tipo];
     }));
   }
 
@@ -70,6 +79,20 @@ export class DetailsCostComponent implements OnInit, OnDestroy {
 
   showUpdate(isUpdate: boolean) {
     this.isUpdate = isUpdate;
+  }
+
+  formatarValorMonetario() {
+    let valorMonetario = this.custo.valor;
+    valorMonetario = valorMonetario + '';
+    valorMonetario = valorMonetario.replace(/[\D]+/g, '');
+    valorMonetario = valorMonetario + '';
+    valorMonetario = valorMonetario.replace(/([0-9]{2})$/g, ",$1");
+
+    if (valorMonetario.length > 6) {
+      valorMonetario = valorMonetario.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+    }
+
+    this.custo.valor = valorMonetario !== 'NaN' ? 'R$ ' + valorMonetario : '';
   }
 
 }

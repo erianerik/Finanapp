@@ -1,13 +1,13 @@
 <ion-content *ngIf="showDetail">
   <form #form="ngForm" (ngSubmit)="atualizarCusto(form)" class="detail-container">
-    <div class="detail-container__box ds-flex-center">
+    <div class="detail-container__box">
       <div class="detail-content" *ngIf="!exibirLoading">
         <span class="close-datail">
           <ion-icon name="close" (click)="closeDetail()"></ion-icon>
         </span>
         <header class="detail-content__header">
           <div class="header__icon">
-            <ion-icon name="bandage-outline"></ion-icon>
+            <ion-icon [name]="custo.icone"></ion-icon>
           </div>
 
           <h2 class="detail-content__header__title">{{ custo.tipo }}</h2>
@@ -23,28 +23,46 @@
 
         <div class="detail-description">
           <label class="detail-description__title">Valor: </label>
-          <p class="detail-description__description" *ngIf="!isUpdate">R$ {{ custo.valor }}</p>
-          <input type="text" name="valor" class="input" [(ngModel)]="custo.valor" *ngIf="isUpdate">
+          <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.valor }}</p>
+          <input type="text" name="valor" class="input" (keyup)="formatarValorMonetario()" [(ngModel)]="custo.valor" *ngIf="isUpdate">
 
           <label class="detail-description__title">Data: </label>
           <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.data }}</p>
           <input type="text" name="data" class="input" [(ngModel)]="custo.data" *ngIf="isUpdate">
+          
+          <label class="detail-description__title">Tipo: </label>
+          <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.tipo }}</p>
+          <select name="tipo" id="tipo" class="input select" *ngIf="isUpdate" [(ngModel)]="custo.tipo">
+            <option value="COMIDA">Comida</option>
+            <option value="RESTAURANTE">Restaurante</option>
+            <option value="ROUPA">Roupa</option>
+            <option value="MERCADO">Mercado</option>
+            <option value="LAZER">Lazer</option>
+            <option value="PETS">Pets</option>
+            <option value="GASOLINA">Gasolina</option>
+            <option value="SERVICOS">Serviços</option>
+            <option value="TELEFONE">Telefone</option>
+            <option value="VIAGEM">Viagem</option>
+            <option value="INTERNET">Internet</option>
+            <option value="PRESENTE">Presente</option>
+            <option value="COMPRA">Compra</option>
+            <option value="OUTROS">Outros</option>
+          </select>
+
+          <label class="detail-description__title" *ngIf="custo.descricao.length !== 0 || isUpdate">Descrição: </label>
+          <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.descricao }}</p>
+          <ion-textarea class="input input-textarea" placeholder="Ex.: Presente para minha mãe" name="descricao" [(ngModel)]="custo.descricao" *ngIf="isUpdate">
+          </ion-textarea>
 
           <label class="detail-description__title">Custo: </label>
-          <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.gasto ? 'Sim' : 'Não' }}</p>
-          <input type="text" name="gasto" class="input" [(ngModel)]="custo.gasto" *ngIf="isUpdate">
+          <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.custo ? 'Sim' : 'Não' }}</p>
+          <ion-toggle class="input-toggle" name="custo" [(ngModel)]="custo.custo" *ngIf="isUpdate"></ion-toggle>
 
           <div *ngIf="custo.possuiParcela">
             <label class="detail-description__title">Próxima parcela: </label>
             <p class="detail-description__description" *ngIf="!isUpdate">-</p>
             <input type="text" name="date" class="input" *ngIf="isUpdate">
           </div>
-
-          <label class="detail-description__title">Descrição: </label>
-          <p class="detail-description__description" *ngIf="!isUpdate">{{ custo.descricao }}</p>
-          <ion-textarea class="input input-textarea" placeholder="Ex.: Presente para minha mãe" name="descricao"
-            [(ngModel)]="custo.descricao" *ngIf="isUpdate">
-          </ion-textarea>
 
         </div>
         <ion-button type="submit" class="update-button" *ngIf="isUpdate">Atualizar</ion-button>

@@ -50,7 +50,12 @@ export class AddCostPage implements OnInit {
     BroadcastService.toggleLoading();
     this.custo = this.custoForm.value as Custo;
     this.custo.idUsuario = this.idUsuario;
-    this._custoService.cadastrarCusto(this.custo).subscribe(() => { this._custoService.atualizarDadosCusto(); this.custoForm.reset(); });
+    this._custoService.cadastrarCusto(this.custo).subscribe(() => {
+      this._custoService.atualizarDadosCusto();
+      this.custoForm.reset();
+      this.custoForm.controls.custo.setValue(true);
+      this.custoForm.controls.tipo.setValue('selecione');
+    });
     BroadcastService.toggleLoading();
   }
 

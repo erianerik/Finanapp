@@ -48,7 +48,10 @@ export class HomePage implements OnInit {
     this.estatistica = [];
     const custos = this.itensHome.custos;
     const custoTotal = parseFloat(this.itensHome.totalGasto.toString().replace(',', '.'));
-    custos.forEach(custoItem => this.estatistica.push(new Estatistica(custoItem.tipo)));
+    custos.forEach(custoItem => {
+      if (!custoItem.custo) { return; }
+      this.estatistica.push(new Estatistica(custoItem.tipo))
+    });
     this.estatistica = this.estatistica.filter(function (a) {
       return !this[JSON.stringify(a)] && (this[JSON.stringify(a)] = true);
     }, Object.create(null));
@@ -56,13 +59,13 @@ export class HomePage implements OnInit {
     custos.forEach((custoItem) => {
       this.estatistica.map((estatistica) => {
         let valorItem = parseFloat(custoItem.valor.toString().replace(',', '.'));
-        estatistica.valor += estatistica.nome === custoItem.tipo.toLocaleUpperCase() ? valorItem : 0
+        estatistica.valor += estatistica.nome === custoItem.tipo.toLocaleUpperCase() ? valorItem : 0;
       });
-
-      this.estatistica.map((estatistica) => {
-        estatistica.porcetagem = Math.round((estatistica.valor * 100) / custoTotal)
-      });
-      this.estatistica.forEach((estatistica => estatistica.icone = FormatadorUtils.icones[estatistica.nome]));
     });
+
+    this.estatistica.map((estatistica) => {
+      estatistica.porcetagem = Math.round((estatistica.valor * 100) / custoTotal)
+    });
+    this.estatistica.forEach((estatistica => estatistica.icone = FormatadorUtils.icones[estatistica.nome]));
   }
 }

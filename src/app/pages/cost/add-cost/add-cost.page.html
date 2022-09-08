@@ -35,7 +35,7 @@
 
         <label class="input-label">Tipo</label>
         <select name="tipo" id="tipo" class="input select" [ngClass]="{'input-error': custoForm.controls.tipo.errors && custoForm.controls.tipo.touched}"  formControlName="tipo">
-          <option disabled [selected]="true">Selecione...</option>
+          <option disabled value="selecione" [selected]="true">Selecione...</option>
           <option value="COMIDA">Comida</option>
           <option value="RESTAURANTE">Restaurante</option>
           <option value="ROUPA">Roupa</option>

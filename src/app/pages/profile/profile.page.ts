@@ -30,9 +30,7 @@ export class ProfilePage implements OnInit {
   }
 
   carregarDadosPerfil() {
-    console.log(this.idUsuario);
     this._usuarioService.buscarDadosPerfilUsuario(this.idUsuario).subscribe((dadosPerfil => this.dadosPerfil = dadosPerfil));
-    console.log(this.dadosPerfil);
   }
 
   update() {

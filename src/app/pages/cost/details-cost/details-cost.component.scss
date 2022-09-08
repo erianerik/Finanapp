@@ -27,7 +27,8 @@
 
 .detail-content {
     width: 100%;
-    padding: 1.5em 1em;
+    min-height: 100% !important;
+    padding: 2.5em 1em;
     position: relative;
     min-height: auto;
     display: flex;
@@ -37,8 +38,8 @@
 
 .close-datail {
     position: fixed;
-    top: 30px;
-    right: 20px;
+    top: 25px;
+    right: 16px;
     z-index: 3;
 
     ion-icon {
@@ -96,7 +97,7 @@
 .detail-description {
     .input {
         margin: 0;
-        margin-bottom: 0.5em;
+        margin-bottom: 1em;
     }
 }
 
@@ -107,7 +108,12 @@
 
 .detail-description__title {
     font-size: 0.9rem;
+    margin-top: 1.3em;
     color: var(--grey100);
+}
+
+.detail-description__title:first {
+    margin-top: 0;
 }
 
 .detail-description__description {

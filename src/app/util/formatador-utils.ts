@@ -9,12 +9,12 @@ export class FormatadorUtils {
         'PETS': 'paw',
         'GASOLINA': 'car',
         'SERVICOS': 'construct',
-        'TELEFONE': 'phone-portrait',
+        'TELEFONE': 'call',
         'VIAGEM': 'airplane',
         'INTERNET': 'wifi',
         'PRESENTE': 'gift',
         'OUTROS': 'sync',
-        'COMPRAS': 'bag-handle'
+        'COMPRA': 'bag-handle'
     }
 
     static formatarValor(valor: string): string {

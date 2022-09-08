@@ -6,7 +6,7 @@ export class Custo {
     descricao: string;
     data: string;
     possuiParcela: boolean;
-    gasto: boolean;
+    custo: boolean;
     quantidadeParcela: number;
     proximaParcela: string;
     icone: string;
@@ -16,7 +16,7 @@ export class Custo {
         this.tipo = 'LAZER';
         this.descricao = '';
         this.possuiParcela = false;
-        this.gasto = true;
+        this.custo = true;
         this.quantidadeParcela = 0;
     }
 }
