@@ -65,6 +65,7 @@ export class HomePage implements OnInit {
 
     this.estatistica.map((estatistica) => {
       estatistica.porcetagem = Math.round((estatistica.valor * 100) / custoTotal)
+      estatistica.valorMonetario = FormatadorUtils.formatarValorMonetario(estatistica.valor);
     });
     this.estatistica.forEach((estatistica => estatistica.icone = FormatadorUtils.icones[estatistica.nome]));
   }

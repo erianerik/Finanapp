@@ -24,7 +24,7 @@
           </div>
         </div>
 
-        <button class="statistisc-button" *ngIf="estatistica.length !== 0">Olhar estatística desse périodo</button>
+        <button class="statistisc-button" routerLink="/cost-chart" *ngIf="estatistica.length !== 0">Olhar gráfico desse périodo</button>
       </div>
     </div>
 
@@ -36,7 +36,7 @@
         </div>
 
         <div class="cost__card__body">
-          <span class="card__item__value">R$ {{ estatistica.valor }}</span>
+          <span class="card__item__value">{{ estatistica.valorMonetario }}</span>
           <h2 class="card__item__type-title">{{ estatistica.nome }}</h2>
         </div>
       </div>
