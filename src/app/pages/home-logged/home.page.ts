@@ -47,7 +47,7 @@ export class HomePage implements OnInit {
   calcularEstatistica() {
     this.estatistica = [];
     const custos = this.itensHome.custos;
-    const custoTotal = parseFloat(this.itensHome.totalGasto.toString().replace(',', '.'));
+    const custoTotal = parseFloat(FormatadorUtils.ajustarValor(this.itensHome.totalGasto.toString()));
     custos.forEach(custoItem => {
       if (!custoItem.custo) { return; }
       this.estatistica.push(new Estatistica(custoItem.tipo))
@@ -58,13 +58,13 @@ export class HomePage implements OnInit {
 
     custos.forEach((custoItem) => {
       this.estatistica.map((estatistica) => {
-        let valorItem = parseFloat(custoItem.valor.toString().replace(',', '.'));
+        let valorItem = parseFloat(FormatadorUtils.ajustarValor(custoItem.valor.toString()));
         estatistica.valor += estatistica.nome === custoItem.tipo.toLocaleUpperCase() ? valorItem : 0;
       });
     });
 
     this.estatistica.map((estatistica) => {
-      estatistica.porcetagem = Math.round((estatistica.valor * 100) / custoTotal)
+      estatistica.porcetagem = Math.round((estatistica.valor * 100) / custoTotal);
       estatistica.valorMonetario = FormatadorUtils.formatarValorMonetario(estatistica.valor);
     });
     this.estatistica.forEach((estatistica => estatistica.icone = FormatadorUtils.icones[estatistica.nome]));
